@@ -518,6 +518,7 @@
 				404B7A621F0530020021A582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		404B7A631F0530020021A582 /* Build configuration list for PBXNativeTarget "QuizTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +527,7 @@
 				404B7A651F0530020021A582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		404B7A661F0530020021A582 /* Build configuration list for PBXNativeTarget "QuizUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +536,7 @@
 				404B7A681F0530020021A582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
