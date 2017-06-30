@@ -13,6 +13,7 @@
 		40A225071F0660C9005602AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A225061F0660C9005602AC /* Assets.xcassets */; };
 		40A2250A1F0660C9005602AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A225081F0660C9005602AC /* LaunchScreen.storyboard */; };
 		40A225151F0660C9005602AC /* weak1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A225141F0660C9005602AC /* weak1Tests.swift */; };
+		40A225201F066A32005602AC /* AutoLayout in Resources */ = {isa = PBXBuildFile; fileRef = 40A2251F1F066A32005602AC /* AutoLayout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		40A225101F0660C9005602AC /* weak1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weak1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A225141F0660C9005602AC /* weak1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weak1Tests.swift; sourceTree = "<group>"; };
 		40A225161F0660C9005602AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A2251F1F066A32005602AC /* AutoLayout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoLayout; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				40A225061F0660C9005602AC /* Assets.xcassets */,
 				40A225081F0660C9005602AC /* LaunchScreen.storyboard */,
 				40A2250B1F0660C9005602AC /* Info.plist */,
+				40A2251F1F066A32005602AC /* AutoLayout */,
 			);
 			path = weak1;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40A2250A1F0660C9005602AC /* LaunchScreen.storyboard in Resources */,
+				40A225201F066A32005602AC /* AutoLayout in Resources */,
 				40A225071F0660C9005602AC /* Assets.xcassets in Resources */,
 				40A225051F0660C9005602AC /* Main.storyboard in Resources */,
 			);
@@ -414,6 +418,7 @@
 				40A2251B1F0660C9005602AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40A2251C1F0660C9005602AC /* Build configuration list for PBXNativeTarget "weak1Tests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +427,7 @@
 				40A2251E1F0660C9005602AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
