@@ -83,19 +83,19 @@ if let r1 = reading1, let r2 = reading2, let r3 = reading3{
 
 
 enum PieType{
-    case Apple
-    case Cherry
-    case Pecan
+    case apple
+    case cherry
+    case pecan
 }
-let favoritePie = PieType.Apple
+let favoritePie = PieType.apple
 
 let name: String
 switch favoritePie {
-case .Apple:
+case .apple:
     name = "Apple"
-case .Cherry:
+case .cherry:
     name = "Cherry"
-case .Pecan:
+case .pecan:
     name = "Pecan"
 
 }
