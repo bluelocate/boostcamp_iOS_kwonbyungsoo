@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     }
     */
     
+    let aspect = NSLayoutConstraint(item: (Any).self, attribute: .width, relatedBy: .equal, toItem: AnyObject.self, attribute: .height, multiplier: 1.5, constant: 0.0)
     
 }
 

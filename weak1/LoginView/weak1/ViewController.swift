@@ -16,8 +16,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: Properties
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    var id:String?
-    var password:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,22 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if textField == idTextField{
-            
-            id = textField.text
-            
-        }else if textField == passwordTextField{
-          
-            password = textField.text
-        
-        }else {
-            id = "no"
-            password = "no"
-        }
-        
-    }
+   
     
     //MARK: Button Action
     @IBAction func signUpAction(_ sender: UIButton) {
@@ -66,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func signInAction(_ sender: UIButton) {
-        print("ID : \(id!), PW : \(password!)")
+        print("ID : \(idTextField.text ?? ""), PW : \(passwordTextField.text ?? "")")
     }
     
     
