@@ -66,7 +66,8 @@ greet(person: ["name" : "Jane", "location": "Cupertino"])
 
 
 func greet(person: String) -> String{
-    let greeting = "Hello," + person + "!"
+    //let greeting = "Hello," + person + "!"
+    let greeting = "Hello, \(person)!"
     return greeting
 }
 
@@ -126,5 +127,54 @@ let strings = numbers.map {
     print(output)
         return output
 }
+
+
+let one = 1
+let two = 2
+var three = one + two
+var three2:Int{
+    return one + two
+}
+
+
+print(three)
+print(three2)
+
+
+struct Cuboid {
+    var width:Double
+    var height:Double
+    var depth:Double
+    var volume: Double {
+        return width * height * depth
+    }
+    
+    var newVolume = 4.0{
+        willSet(newValue){
+            print("It will change \(newValue)")
+        }
+        didSet{
+            if newVolume > oldValue {
+                print("new : \(newVolume) old : \(oldValue)")
+            }
+        }
+    }
+
+//    init(width:Double, height:Double, depth:Double) {
+//        self.width = width
+//        self.height = height
+//        self.depth = depth
+//        
+//    }
+
+}
+
+//var counter = Cuboid(width:3.0, height:3.0, depth:34.3)
+//counter.newVolume = 1
+
+//let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
+//print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+// Prints "the volume of fourByFiveByTwo is 40.0"
+
 
 
