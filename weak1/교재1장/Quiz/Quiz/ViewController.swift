@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         
         currentQuestionIndex = (currentQuestionIndex + 1) % questions.count
         
+        
         let question: String = questions[currentQuestionIndex]
         questionLabel.text = question
         answerLabel.text = "???"
