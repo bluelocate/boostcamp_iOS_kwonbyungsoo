@@ -16,13 +16,18 @@ class Meal {
     var photo: UIImage?
     var rating: Int
     
-    init(name: String, photo: UIImage?, rating: Int) {
+    //실패할 수 있기 때문에 (init?)
+    init?(name: String, photo: UIImage?, rating: Int) {
         self.name = name
         self.photo = photo
         self.rating = rating
 
+        //Initialization should fail if there is no name or if the rating is negative
+        guard !name.isEmpty else {
+            return nil
+        }
         
-        if name.isEmpty || rating < 0 {
+        guard (rating >= 0) && (rating <= 5) else {
             return nil
         }
     }
