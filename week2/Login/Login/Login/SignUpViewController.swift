@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate {
+class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate {
 
     @IBOutlet weak var sampleTextView: UITextView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -88,6 +88,14 @@ class ViewController: UIViewController,UITextFieldDelegate,UIImagePickerControll
         
     }
     
+    @IBAction func cancelButton(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func signUpButton(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     //MARK: 선택된 이미지를 셋팅합니다.
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
