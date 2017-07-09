@@ -88,13 +88,30 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         
     }
     
+    //중간 도전 과제 Cancel 시 모달 dismiss(도전과제)
     @IBAction func cancelButton(_ sender: UIButton) {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    //중간 도전 과제 Sign Up 시 모달 dismiss(도전과제)
     @IBAction func signUpButton(_ sender: UIButton) {
+
+        //만약 패스워드가 일치하지 않는다면 모달을 내리지 않는다. (도전과제)
+        if passwordTextField.text != verifyPasswordTextField.text{
+            
+            print("Not Matching Password! with password \(passwordTextField.text!) and verify \(verifyPasswordTextField.text!)")
         
-        dismiss(animated: true, completion: nil)
+        }else if (passwordTextField.text?.isEmpty)! && (verifyPasswordTextField.text?.isEmpty)!{
+            
+            print("It's Blank")
+        
+        }else {
+            
+            dismiss(animated: true, completion: nil)
+        
+        }
+
     }
     //MARK: 선택된 이미지를 셋팅합니다.
 

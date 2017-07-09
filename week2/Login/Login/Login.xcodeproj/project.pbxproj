@@ -13,6 +13,7 @@
 		4068D04E1F112F4900690CCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4068D04D1F112F4900690CCA /* Assets.xcassets */; };
 		4068D0511F112F4900690CCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4068D04F1F112F4900690CCA /* LaunchScreen.storyboard */; };
 		4068D05C1F112F4900690CCA /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068D05B1F112F4900690CCA /* LoginTests.swift */; };
+		406FC6641F11D1A7002DFFD9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406FC6631F11D1A7002DFFD9 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		4068D0571F112F4900690CCA /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4068D05B1F112F4900690CCA /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		4068D05D1F112F4900690CCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		406FC6631F11D1A7002DFFD9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				4068D0451F112F4900690CCA /* Login */,
-				4068D05A1F112F4900690CCA /* LoginTests */,
 				4068D0441F112F4900690CCA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,10 +80,12 @@
 			children = (
 				4068D0461F112F4900690CCA /* AppDelegate.swift */,
 				4068D0481F112F4900690CCA /* SignUpViewController.swift */,
+				406FC6631F11D1A7002DFFD9 /* LoginViewController.swift */,
 				4068D04A1F112F4900690CCA /* Main.storyboard */,
 				4068D04D1F112F4900690CCA /* Assets.xcassets */,
 				4068D04F1F112F4900690CCA /* LaunchScreen.storyboard */,
 				4068D0521F112F4900690CCA /* Info.plist */,
+				4068D05A1F112F4900690CCA /* LoginTests */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -94,7 +97,7 @@
 				4068D05D1F112F4900690CCA /* Info.plist */,
 			);
 			path = LoginTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				406FC6641F11D1A7002DFFD9 /* LoginViewController.swift in Sources */,
 				4068D0491F112F4900690CCA /* SignUpViewController.swift in Sources */,
 				4068D0471F112F4900690CCA /* AppDelegate.swift in Sources */,
 			);

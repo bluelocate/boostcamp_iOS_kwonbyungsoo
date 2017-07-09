@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="OUa-pe-DoW">
             <objects>
-                <viewController id="zxZ-Lc-ILV" sceneMemberID="viewController">
+                <viewController id="zxZ-Lc-ILV" customClass="LoginViewController" customModule="Login" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HEz-iN-ucC"/>
                         <viewControllerLayoutGuide type="bottom" id="yqB-mt-7w5"/>
@@ -59,7 +59,9 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82y-yi-m0d">
                                                 <rect key="frame" x="112" y="19" width="112" height="30"/>
-                                                <state key="normal" title="Sign Up"/>
+                                                <state key="normal" title="Sign Up">
+                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <segue destination="BYZ-38-t0r" kind="presentation" id="M6G-Iw-Lzb"/>
                                                 </connections>
@@ -145,8 +147,8 @@
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mox-Lo-t2x">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="395"/>
-                                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
@@ -155,7 +157,9 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4E-ra-psc">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="50"/>
-                                                        <state key="normal" title="Cancel"/>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fsq-st-O4y"/>
                                                         </connections>
@@ -176,14 +180,24 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자고 일어났을 뿐인데 10분만에 만들어진 스택뷰 오토레이아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQn-uL-TN0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="uKn-1L-3Sn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="24" id="ENn-qT-FPG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uKn-1L-3Sn" secondAttribute="trailing" id="HRd-lM-0mL"/>
+                            <constraint firstItem="HQn-uL-TN0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Si0-GH-R7c"/>
                             <constraint firstItem="uKn-1L-3Sn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VRK-y4-Vmn"/>
+                            <constraint firstItem="HQn-uL-TN0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XX1-Jj-8q6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uKn-1L-3Sn" secondAttribute="bottom" id="f6c-B1-MCm"/>
+                            <constraint firstItem="uKn-1L-3Sn" firstAttribute="top" secondItem="HQn-uL-TN0" secondAttribute="bottom" constant="8" symbolic="YES" id="uh1-AA-OQs"/>
+                            <constraint firstItem="HQn-uL-TN0" firstAttribute="centerX" secondItem="uKn-1L-3Sn" secondAttribute="centerX" id="y1s-Gp-S1l"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="erk-CH-zEJ" appends="YES" id="Wzt-K8-QKR"/>
@@ -209,7 +223,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="134" y="-28"/>
+            <point key="canvasLocation" x="133.125" y="-28.52112676056338"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="63R-Qf-TMa">
@@ -273,7 +287,7 @@
                                 </subviews>
                             </stackView>
                             <imageView contentMode="scaleToFill" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="bZ5-m9-nW9">
-                                <rect key="frame" x="8" y="41" width="108" height="108"/>
+                                <rect key="frame" x="24" y="57" width="76" height="76"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bZ5-m9-nW9" secondAttribute="height" multiplier="1:1" id="Hhi-Ki-3fC"/>
@@ -282,6 +296,13 @@
                                     <outletCollection property="gestureRecognizers" destination="JoC-TV-lQh" appends="YES" id="kiY-Zg-htg"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="세시간 삽질한 끝에 만든 반 스택 복잡한 오토레이아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq8-zO-fHJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -293,7 +314,7 @@
                             <constraint firstItem="jTO-rJ-nfL" firstAttribute="width" secondItem="cbC-gZ-veP" secondAttribute="width" id="FFc-Oa-tyt"/>
                             <constraint firstItem="jTO-rJ-nfL" firstAttribute="centerX" secondItem="cbC-gZ-veP" secondAttribute="centerX" id="GYB-ni-sLt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VcQ-ag-lRe" secondAttribute="trailing" id="GbI-jK-GVe"/>
-                            <constraint firstItem="bZ5-m9-nW9" firstAttribute="height" secondItem="VcQ-ag-lRe" secondAttribute="height" multiplier="0.8" id="Unh-Yy-byw"/>
+                            <constraint firstItem="bZ5-m9-nW9" firstAttribute="width" secondItem="VcQ-ag-lRe" secondAttribute="width" multiplier="0.4" id="U0I-j0-q63"/>
                             <constraint firstItem="bZ5-m9-nW9" firstAttribute="centerY" secondItem="VcQ-ag-lRe" secondAttribute="centerY" id="XxR-4F-5Em"/>
                             <constraint firstItem="Sgx-gA-zgC" firstAttribute="top" secondItem="jTO-rJ-nfL" secondAttribute="bottom" constant="8" id="aqa-M7-yXr"/>
                             <constraint firstItem="cbC-gZ-veP" firstAttribute="centerX" secondItem="qFr-x6-3y6" secondAttribute="centerX" id="bEw-CQ-dJV"/>
@@ -328,7 +349,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="134" y="905"/>
+            <point key="canvasLocation" x="112.5" y="903.16901408450701"/>
         </scene>
     </scenes>
     <resources>
