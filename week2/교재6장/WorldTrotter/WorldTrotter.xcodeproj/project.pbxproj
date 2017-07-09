@@ -12,7 +12,7 @@
 		404C8A071F06967A007935AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 404C8A061F06967A007935AC /* Assets.xcassets */; };
 		404C8A0A1F06967A007935AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404C8A081F06967A007935AC /* LaunchScreen.storyboard */; };
 		4067FD581F0A442C007BEC2A /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4067FD571F0A442C007BEC2A /* ConversionViewController.swift */; };
-		40A428231F0B7271001E2894 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A428221F0B7271001E2894 /* MapKit.framework */; };
+		406FC6661F1229D4002DFFD9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406FC6651F1229D4002DFFD9 /* MapKit.framework */; };
 		40A428251F0B7688001E2894 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A428241F0B7688001E2894 /* MapViewController.swift */; };
 		40A428531F0BAD6D001E2894 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A428521F0BAD6D001E2894 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,7 @@
 		404C8A091F06967A007935AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		404C8A0B1F06967A007935AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4067FD571F0A442C007BEC2A /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
-		40A428221F0B7271001E2894 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		406FC6651F1229D4002DFFD9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		40A428241F0B7688001E2894 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		40A428521F0BAD6D001E2894 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A428231F0B7271001E2894 /* MapKit.framework in Frameworks */,
+				406FC6661F1229D4002DFFD9 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 		40A428211F0B7271001E2894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40A428221F0B7271001E2894 /* MapKit.framework */,
+				406FC6651F1229D4002DFFD9 /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
