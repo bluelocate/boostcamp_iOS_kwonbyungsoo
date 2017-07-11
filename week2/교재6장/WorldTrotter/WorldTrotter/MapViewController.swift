@@ -13,7 +13,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
    
     var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    var mapAnnotation: [MKAnnotation] = []
     var currentLocationCoordinate: CLLocationCoordinate2D?
     var count = 0
     
@@ -29,8 +28,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         //현재 위치를 보여줍니다.
         mapView.delegate = self
         mapView.showsUserLocation = true
-        mapView.isUserInteractionEnabled = true
         
+      
         //MARK: 권한 설정 -> 꼭 CLLocationManager가 있어야 가능한 것인가?
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -138,25 +137,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //맵이 보이는 범위를 설정
         self.mapView.setRegion(.init(center: self.mapView.userLocation.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
-        
+       
     }
     
-
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//     
-//        if let annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "PinAnnotation"){
-//            return annotationView
-//        }else {
-//        
-//            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"PinAnnotation")
-//            annotationView.animatesDrop = true
-//            annotationView.canShowCallout = true
-//            annotationView.isDraggable = true
-//            annotationView.annotation = annotation
-//            self.mapView.addAnnotation(annotation)
-//            return annotationView
-//        }
-//    }
+    //Annotation 이 추가되었다.
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        print("Annotation 이 추가되었다.")
+        print(self.mapView.annotations)
+    
+    }
+    
+    //Annotation 모양새에 대한 함수
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+     
+        print(#function)
+        
+        if let annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "PinAnnotation"){
+            return annotationView
+        }else {
+        
+            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"PinAnnotation")
+            annotationView.animatesDrop = true
+            annotationView.canShowCallout = true
+            annotationView.isDraggable = true
+            annotationView.annotation = annotation
+            return annotationView
+        }
+    }
+    
+    
 
     
     //MARK: 현재 맵 위치를 줌 합니다.
@@ -170,27 +179,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // 사용자가 지정한 핀을 순회한다.
     func favoriteLocations(){
         
-        if !mapAnnotation.isEmpty{
-            count = (count + 1) % mapAnnotation.count
-            self.mapView.setCenter(mapAnnotation[count].coordinate, animated: true)
+        if !self.mapView.annotations.isEmpty{
+            count = (count + 1) % self.mapView.annotations.count
+            self.mapView.setCenter(self.mapView.annotations[count].coordinate, animated: true)
         }
     }
     
     
-    //annotation 제스쳐 추가
+//    annotation 제스쳐 추가
     func addAnnotation(gestureRecognizer:UIGestureRecognizer){
         print("터치터치")
         let touchPoint = gestureRecognizer.location(in: self.mapView)
         let newCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-     
+        
+        //커스텀 Annotation
         let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinates
+        annotation.title = "hello"
         
-        //mapAnnotation 배열에 추가.
-        mapAnnotation.append(annotation)
+        //mapAnnotation 추가.
         self.mapView.addAnnotation(annotation)
-        print(mapAnnotation)
-     
         
     }
     
