@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XMD-Wa-ktW">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,11 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6YO-7I-iaA">
-                                <rect key="frame" x="56.5" y="284.5" width="262.5" height="31.5"/>
+                                <rect key="frame" x="100" y="141" width="467" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6YO-7I-iaA" secondAttribute="height" multiplier="25:3" id="1Kq-nM-vTt"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhp-iz-XFh">
-                                <rect key="frame" x="56.5" y="326" width="262.5" height="31.5"/>
+                                <rect key="frame" x="100" y="207" width="467" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yhp-iz-XFh" secondAttribute="height" multiplier="25:3" id="ZJ6-e1-g8P"/>
                                 </constraints>
@@ -42,20 +42,20 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bxL-Ow-IEA">
-                                <rect key="frame" x="87.5" y="33.5" width="200" height="200"/>
+                                <rect key="frame" x="277" y="19" width="113" height="112"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bxL-Ow-IEA" secondAttribute="height" multiplier="1:1" id="VzD-gy-JWW"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STm-6P-OnJ">
-                                <rect key="frame" x="205" y="368.5" width="78" height="31.5"/>
+                                <rect key="frame" x="394" y="274" width="78" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-6k-beq">
-                                <rect key="frame" x="98" y="368.5" width="67" height="31.5"/>
+                                <rect key="frame" x="200" y="274" width="67" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Sign In"/>
                             </button>
@@ -101,29 +101,29 @@
                         <viewControllerLayoutGuide type="bottom" id="YAB-wy-0HX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JUR-AX-1GH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-Kx-f7X">
-                                <rect key="frame" x="121" y="66.5" width="133" height="133.5"/>
+                                <rect key="frame" x="296" y="37" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hhf-Kx-f7X" secondAttribute="height" multiplier="1:1" id="l4W-Y9-hwW"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iLf-10-hhy">
-                                <rect key="frame" x="56.5" y="273.5" width="262.5" height="120"/>
+                                <rect key="frame" x="100" y="128" width="467" height="120"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ijU-oy-Mzg">
-                                        <rect key="frame" x="0.0" y="0.0" width="262.5" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="467" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XqR-rn-xyo">
-                                                <rect key="frame" x="0.0" y="0.0" width="262.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="467" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncw-uj-Eqa">
-                                                <rect key="frame" x="0.0" y="30" width="262.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="30" width="467" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -131,17 +131,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-DI-IhE">
-                                        <rect key="frame" x="0.0" y="60" width="262.5" height="60"/>
+                                        <rect key="frame" x="0.0" y="60" width="467" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUs-X8-3XS">
-                                                <rect key="frame" x="0.0" y="0.0" width="131.5" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="60"/>
                                                 <state key="normal" title="Sing In"/>
                                                 <connections>
                                                     <action selector="signInAction:" destination="XMD-Wa-ktW" eventType="touchUpInside" id="75g-aM-3sa"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b93-y6-tMs">
-                                                <rect key="frame" x="131.5" y="0.0" width="131" height="60"/>
+                                                <rect key="frame" x="234" y="0.0" width="233" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="Sign Up">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,7 +155,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스택뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEY-sf-PtD">
-                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
