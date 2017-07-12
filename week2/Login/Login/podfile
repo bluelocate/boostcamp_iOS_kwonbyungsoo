@@ -6,7 +6,6 @@ target 'Login' do
   use_frameworks!
 pod 'FacebookCore'
 pod 'FacebookLogin'
-pod 'FacebookShare'
   # Pods for Login
 
   target 'LoginTests' do
