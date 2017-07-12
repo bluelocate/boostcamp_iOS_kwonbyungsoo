@@ -13,7 +13,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var celsiusLabel: UILabel!
     @IBOutlet var textField: UITextField!
-
+    
+    
+    
     let numberFormatter: NumberFormatter = {
         let numberFormat = NumberFormatter()
         numberFormat.numberStyle = .decimal
@@ -22,20 +24,18 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         return numberFormat
     }()
     
-    //MARK: 현재 밤인지 판단하는 함수
-    func isNight() -> Bool{
+    //MARK: 현재 밤인지 판단하는 프로퍼티
+    var isNight: Bool{
      
         let date = Date()
         let currentTime = Calendar.current
         let hour = currentTime.component(.hour, from: date)
         let minute = currentTime.component(.minute, from: date)
         print("지금 시간은 :\(hour)시 \(minute)분")
-        if hour > 18{
-            return true
-        }else {
-            return false
-        }
-    
+        if hour > 18{ return true }
+
+        return false
+        
     }
     
     //MARK: 초기 뷰 설정
@@ -50,7 +50,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if isNight(){
+        if isNight{
             print("밤이다")
             view.backgroundColor = UIColor.lightGray
         }else {
@@ -73,9 +73,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         if let value = farenheitValue{
             return (value - 32) * (5/9)
     
-        } else {
-            return nil
         }
+        return nil
+        
     }
     
     @IBAction func farenheitFieldEditingChanged(textField: UITextField){
@@ -99,10 +99,8 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         if existingTextHasDecimalSeperator != nil && replacementTextHasDecimalSeperator != nil || (replacementTextHasCharacterValue != nil || existingTextHasCharacter != nil){
             print("입력하지마")
             return false
-        }else {
-            print("입력해")
-            return true
         }
+        return true
     }
     
     func updateCelsiusLabel() {
