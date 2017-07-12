@@ -152,18 +152,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
      
         print(#function)
         
-        if let annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "PinAnnotation"){
+        guard let annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "PinAnnotation")else {
+            
+            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"PinAnnotation")
+            annotationView.animatesDrop = true
+            annotationView.canShowCallout = true
+            annotationView.isDraggable = true
+            annotationView.annotation = annotation
             return annotationView
         }
-        
-        let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"PinAnnotation")
-        annotationView.animatesDrop = true
-        annotationView.canShowCallout = true
-        annotationView.isDraggable = true
-        annotationView.annotation = annotation
-        
         return annotationView
-        
     }
     
     

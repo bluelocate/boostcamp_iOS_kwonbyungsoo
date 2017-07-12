@@ -21,8 +21,12 @@ class WebViewController:UIViewController{
         
         //웹 뷰를 이 뷰컨트롤러의 View로 지정
         view = webView
- 
-        webView.load(URLRequest(url: URL(string: "https://www.bignerdranch.com")!))
+        
+        guard let urlLink = URL(string: "https://www.bignerdranch.com") else {
+            print("Link 가 없다.")
+            return
+        }
+        webView.load(URLRequest(url: urlLink))
 
         
         
