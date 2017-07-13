@@ -26,10 +26,8 @@ class WebViewController:UIViewController{
             print("Link 가 없다.")
             return
         }
+        
         webView.load(URLRequest(url: urlLink))
-
-        
-        
     }
     
 }

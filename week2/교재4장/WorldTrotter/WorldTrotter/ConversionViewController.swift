@@ -76,12 +76,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    
-    
     @IBAction func dismissKeyBoard(sender: AnyObject){
         textField.resignFirstResponder()
     }
-    
-    
-    
 }

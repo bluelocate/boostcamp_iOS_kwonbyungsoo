@@ -12,12 +12,11 @@ import CoreLocation
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
    
     var mapView: MKMapView!
-    let locationManager = CLLocationManager()
     var currentLocationCoordinate: CLLocationCoordinate2D?
     var count = 0
+    let locationManager = CLLocationManager()
     
     override func loadView() {
-        
         
         // 지도 뷰 생성
         mapView = MKMapView()
@@ -29,7 +28,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-      
         //MARK: 권한 설정 -> 꼭 CLLocationManager가 있어야 가능한 것인가?
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -39,16 +37,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satelite"])
         segmentedControl.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
-
         segmentedControl.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
-        
-        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
 
         //MARK: 세그먼트 컨트롤 오토레이아웃
         let layoutMargins = view.layoutMarginsGuide
-        
         let topConstraint = segmentedControl.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor,constant:8)
         let leadingConstraint = segmentedControl.leadingAnchor.constraint(equalTo: layoutMargins.leadingAnchor)
         let trailingConstraint = segmentedControl.trailingAnchor.constraint(equalTo: layoutMargins.trailingAnchor)
@@ -56,16 +50,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         topConstraint.isActive = true
         leadingConstraint.isActive = true
         trailingConstraint.isActive = true
-        
+      
         
         //MARK: 현재 위치 버튼
         let currentLoactionButton = UIButton()
         currentLoactionButton.setTitle("location", for: .normal)
         currentLoactionButton.setTitleColor(.black, for: .normal)
         currentLoactionButton.setTitleColor(.white, for: .highlighted)
-     
         currentLoactionButton.addTarget(self, action: #selector(currentLocation), for: .touchUpInside)
-
         currentLoactionButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(currentLoactionButton)
         
@@ -124,7 +116,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
    
-    
     //MARK: Action
     func currentLocation(){
         
@@ -137,14 +128,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //맵이 보이는 범위를 설정
         self.mapView.setRegion(.init(center: self.mapView.userLocation.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
-       
     }
     
     //Annotation 이 추가되었다.
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+      
         print("Annotation 이 추가되었다.")
         print(self.mapView.annotations)
-    
     }
     
     //Annotation 모양새에 대한 함수
@@ -164,15 +154,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return annotationView
     }
     
-    
-
-    
     //MARK: 현재 맵 위치를 줌 합니다.
     func zoomUp(){
-        
+       
         self.mapView.setRegion(.init(center: self.mapView.userLocation.coordinate, span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)), animated: true)
         print("현재 보이는 맵뷰가 바뀔것입니다.")
-    
+
     }
     
     // 사용자가 지정한 핀을 순회한다.
@@ -182,11 +169,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             count = (count + 1) % self.mapView.annotations.count
             self.mapView.setCenter(self.mapView.annotations[count].coordinate, animated: true)
         }
+        
     }
     
-    
-//    annotation 제스쳐 추가
+    //annotation 제스쳐 추가
     func addAnnotation(gestureRecognizer:UIGestureRecognizer){
+      
         print("터치터치")
         let touchPoint = gestureRecognizer.location(in: self.mapView)
         let newCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
@@ -198,13 +186,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //mapAnnotation 추가.
         self.mapView.addAnnotation(annotation)
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         print("MapViewController loaded its View.")
-    
     }
 }

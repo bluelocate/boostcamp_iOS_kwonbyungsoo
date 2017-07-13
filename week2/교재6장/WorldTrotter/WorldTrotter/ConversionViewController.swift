@@ -15,52 +15,30 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet var textField: UITextField!
 
     let numberFormatter: NumberFormatter = {
+        
         let numberFormat = NumberFormatter()
         numberFormat.numberStyle = .decimal
         numberFormat.minimumFractionDigits = 0
         numberFormat.maximumFractionDigits = 1
+        
         return numberFormat
     }()
     
     //MARK: 현재 밤인지 판단하는 함수
-    func isNight() -> Bool{
+    var isNight: Bool{
      
         let date = Date()
         let currentTime = Calendar.current
         let hour = currentTime.component(.hour, from: date)
         let minute = currentTime.component(.minute, from: date)
         print("지금 시간은 :\(hour)시 \(minute)분")
+        
         if hour > 18{
             return true
-        }else {
-            return false
-        }
-    
-    }
-    
-    //MARK: 초기 뷰 설정
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print("ConversionViewController loaded its View")
-    }
-    
-    
-    //MARK: 시간대에 따라서 배경색 갱신
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if isNight(){
-            print("밤이다")
-            view.backgroundColor = UIColor.lightGray
-        }else {
-            print("낮이다")
-            view.backgroundColor = UIColor.white
         }
         
+        return false
     }
-    
-    
     
     var farenheitValue: Double?{
         didSet{
@@ -70,20 +48,44 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
 
     var celsiusValue: Double?{
     
-        if let value = farenheitValue{
-            return (value - 32) * (5/9)
-    
-        } else {
+        guard let value = farenheitValue else {
             return nil
         }
+        
+        return (value - 32) * (5/9)
     }
+    
+    //MARK: 초기 뷰 설정
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("ConversionViewController loaded its View")
+    }
+    
+    
+    //MARK: 시간대에 따라서 배경색 갱신
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isNight{
+            print("밤이다")
+            view.backgroundColor = UIColor.lightGray
+        }else {
+            print("낮이다")
+            view.backgroundColor = UIColor.white
+        }
+        
+    }
+    
+    // MARK: Action
     
     @IBAction func farenheitFieldEditingChanged(textField: UITextField){
         
         if let text = textField.text, let value = Double(text){
             farenheitValue = value
+            
         }else {
             farenheitValue = nil
+        
         }
     }
 
@@ -114,13 +116,8 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
-    
-    
-    
     @IBAction func dismissKeyBoard(sender: AnyObject){
         textField.resignFirstResponder()
     }
-    
-    
     
 }
