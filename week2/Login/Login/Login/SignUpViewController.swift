@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerCo
         super.viewWillAppear(animated)
         print("view 생성!")
     
-        idTextField.text = userInfo[0].lastName
+  //      idTextField.text = userInfo[0].lastName
     }
     
     
