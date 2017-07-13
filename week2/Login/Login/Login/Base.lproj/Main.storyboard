@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -36,13 +35,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sZD-xo-tGG">
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="68"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XTd-VE-DU8">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XTd-VE-DU8">
                                                 <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rfy-MB-btB">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rfy-MB-btB">
                                                 <rect key="frame" x="0.0" y="38" width="224" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,7 +62,7 @@
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="presentation" id="M6G-Iw-Lzb"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="signUp" id="M6G-Iw-Lzb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -81,6 +80,10 @@
                             <constraint firstItem="ETW-je-gdH" firstAttribute="centerX" secondItem="JU5-1O-AfD" secondAttribute="centerX" id="wAo-pE-2Iu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="idTextField" destination="XTd-VE-DU8" id="x7s-EC-7qT"/>
+                        <outlet property="passwordTextField" destination="Rfy-MB-btB" id="DnM-do-8Fr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdk-Yc-6fl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +92,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpViewController" id="BYZ-38-t0r" customClass="SignUpViewController" customModule="Login" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -102,17 +105,17 @@
                                 <rect key="frame" x="16" y="24" width="288" height="544"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1ZC-A9-P4l">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="91"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="91.5"/>
                                         <subviews>
                                             <imageView contentMode="scaleToFill" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-ps-dYN">
-                                                <rect key="frame" x="0.0" y="0.0" width="104" height="91"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="91.5"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="vEf-D0-6he" appends="YES" id="Pbr-LR-4gV"/>
                                                 </connections>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dsX-vu-TL2">
-                                                <rect key="frame" x="112" y="0.0" width="176" height="91"/>
+                                                <rect key="frame" x="112" y="0.0" width="176" height="91.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="O6C-7D-6nk">
                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="25"/>
@@ -121,13 +124,13 @@
                                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Check Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ucJ-Ym-19O">
-                                                        <rect key="frame" x="0.0" y="33" width="176" height="25"/>
+                                                        <rect key="frame" x="0.0" y="33" width="176" height="25.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2sl-hf-PTl">
-                                                        <rect key="frame" x="0.0" y="66" width="176" height="25"/>
+                                                        <rect key="frame" x="0.0" y="66.5" width="176" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="2sl-hf-PTl" secondAttribute="height" multiplier="7:1" id="CM2-4D-Aa5"/>
                                                         </constraints>
@@ -143,17 +146,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-st-mcN">
-                                        <rect key="frame" x="0.0" y="99" width="288" height="445"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="288" height="444.5"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mox-Lo-t2x">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="395"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="394.5"/>
                                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="97v-hk-lt0">
-                                                <rect key="frame" x="0.0" y="395" width="288" height="50"/>
+                                                <rect key="frame" x="0.0" y="394.5" width="288" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4E-ra-psc">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="50"/>

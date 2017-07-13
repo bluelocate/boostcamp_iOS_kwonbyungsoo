@@ -16,6 +16,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var verifyPasswordTextField: UITextField!
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view 생성!")
+    
+  //      idTextField.text = userInfo[0].lastName
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
