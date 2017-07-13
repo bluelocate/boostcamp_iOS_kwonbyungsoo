@@ -68,20 +68,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,LoginButtonDeleg
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 
                 self.fetchProfile()
-                
-                if let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "signUpViewController"){
-                    
-                    self.present(signupViewController, animated: true, completion: {
-                        
-                    })
-                }
-                
+//                if let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "signUpViewController"){
+//                    
+//                    self.present(signupViewController, animated: true, completion: nil)
+//                }
                 print("Logged in!")
             }
-            
         }
-       
-        
     }
     
     
