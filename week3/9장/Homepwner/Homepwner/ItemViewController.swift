@@ -33,36 +33,54 @@ class ItemViewController: UITableViewController{
         switch section {
         case 0:
             newItem[section] = item.filter{ $0.valueInDollars < 50}
-            newItem[section]?.append(Item(name: "No Item", serialNumber: nil, valueInDollars: 0))
             guard let itemCount = newItem[section]?.count else {
                 return 1
             }
             return itemCount
         case 1:
             newItem[section] = item.filter{ $0.valueInDollars >= 50}
-            newItem[section]?.append(Item(name: "No Item", serialNumber: nil, valueInDollars: 0))
             guard let itemCount = newItem[section]?.count else {
                 return 1
             }
             return itemCount
+        case 2:
+            return 1
         default:
             return 1
         }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
+        switch section {
+        case 0,1:
+            return "Section \(section)"
+        default:
+            return nil
+        }
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 60
+        case 1:
+            return 60
+        default:
+            return 44
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        
+        tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "로도"))
+        
+        
         switch indexPath.section {
         case 0:
             
@@ -70,15 +88,12 @@ class ItemViewController: UITableViewController{
                 return cell
             }
             
-            if newItem.name == "No Item"{
-                cell.textLabel?.text = "No more Items!"
-                cell.detailTextLabel?.text = ""
-                return cell
-            }
-            
             if newItem.valueInDollars < 50 {
                 cell.textLabel?.text = newItem.name
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
                 cell.detailTextLabel?.text = "$\(newItem.valueInDollars)"
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
+                cell.backgroundColor = UIColor.clear
             }
             
             return cell
@@ -87,18 +102,19 @@ class ItemViewController: UITableViewController{
                 return cell
             }
             
-            if newItem.name == "No Item"{
-                cell.textLabel?.text = "No more Items!"
-                cell.detailTextLabel?.text = ""
-                return cell
-            }
-            
             if newItem.valueInDollars >= 50 {
                 cell.textLabel?.text = newItem.name
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
                 cell.detailTextLabel?.text = "$\(newItem.valueInDollars)"
-                print(newItem.name)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 20.0)
+                cell.backgroundColor = UIColor.clear
             }
             
+            return cell
+        case 2:
+            cell.textLabel?.text = "No more Items!"
+            cell.detailTextLabel?.text = ""
+            cell.backgroundColor = UIColor.clear
             return cell
         default:
             return cell
