@@ -10,7 +10,7 @@ import UIKit
 
 
 class ItemViewController: UITableViewController{
- 
+    
     var itemStore: ItemStore!
     var newItem: [Int:[Item]] = [:]
     override func viewDidLoad() {
@@ -29,21 +29,27 @@ class ItemViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let item = itemStore.allItems
-        if section == 0 {
+        
+        switch section {
+        case 0:
             newItem[section] = item.filter{ $0.valueInDollars < 50}
+            newItem[section]?.append(Item(name: "No Item", serialNumber: nil, valueInDollars: 0))
             guard let itemCount = newItem[section]?.count else {
-                return 0
+                return 1
             }
             return itemCount
+        case 1:
+            newItem[section] = item.filter{ $0.valueInDollars >= 50}
+            newItem[section]?.append(Item(name: "No Item", serialNumber: nil, valueInDollars: 0))
+            guard let itemCount = newItem[section]?.count else {
+                return 1
+            }
+            return itemCount
+        default:
+            return 1
         }
-        
-        newItem[1] = item.filter{ $0.valueInDollars > 50}
-        guard let itemCount = newItem[section]?.count else {
-            return 0
-        }
-        return itemCount
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -52,24 +58,50 @@ class ItemViewController: UITableViewController{
         return "Section \(section)"
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        if indexPath.section == 0 {
-          
-            let newItem = self.newItem[indexPath.section]![indexPath.row]
+        switch indexPath.section {
+        case 0:
+            
+            guard let newItem = self.newItem[indexPath.section]?[indexPath.row] else {
+                return cell
+            }
+            
+            if newItem.name == "No Item"{
+                cell.textLabel?.text = "No more Items!"
+                cell.detailTextLabel?.text = ""
+                return cell
+            }
+            
             if newItem.valueInDollars < 50 {
                 cell.textLabel?.text = newItem.name
                 cell.detailTextLabel?.text = "$\(newItem.valueInDollars)"
             }
+            
+            return cell
+        case 1:
+            guard let newItem = self.newItem[indexPath.section]?[indexPath.row] else {
+                return cell
+            }
+            
+            if newItem.name == "No Item"{
+                cell.textLabel?.text = "No more Items!"
+                cell.detailTextLabel?.text = ""
+                return cell
+            }
+            
+            if newItem.valueInDollars >= 50 {
+                cell.textLabel?.text = newItem.name
+                cell.detailTextLabel?.text = "$\(newItem.valueInDollars)"
+                print(newItem.name)
+            }
+            
+            return cell
+        default:
             return cell
         }
-        
-        let newItem = self.newItem[indexPath.section]![indexPath.row]
-        if newItem.valueInDollars > 50 {
-            cell.textLabel?.text = newItem.name
-            cell.detailTextLabel?.text = "$\(newItem.valueInDollars)"
-        }
-        return cell
     }
 }
