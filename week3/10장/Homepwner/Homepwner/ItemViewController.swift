@@ -13,7 +13,7 @@ class ItemViewController: UITableViewController{
  
     
     var itemStore: ItemStore!
-    
+    var isFirst = true
     @IBAction func addNewItem(_ sender: AnyObject){
         
         // 새 물품을 만들고 그것을 저장소에 추가한다.
@@ -48,6 +48,9 @@ class ItemViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        itemStore.createItem()
+
+        
         // 상태 바의 높이를 얻는다.
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
@@ -56,25 +59,36 @@ class ItemViewController: UITableViewController{
         tableView.scrollIndicatorInsets = insets
     }
     
+
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count
     }
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let item = itemStore.allItems[indexPath.row]
         
         // 재사용 셀이나 새로운 셀을 얻는다.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        
         // 물품 배열의 n번째에 있는 항목의 설명을 n과 row와 일치하는 셀의 텍스트로 설정한다.
         // 이 셀은 테이블 뷰의 n번째 행에 나타난다.
-        let item = itemStore.allItems[indexPath.row]
+        print(indexPath.row)
+        
+        cell.index(ofAccessibilityElement: indexPath.last)
+        if isFirst{
+            cell.textLabel?.text = "No more Items!"
+            
+            isFirst = false
+            return cell
+        }
         
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = "$\(item.valueInDollars)"
-        
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Remove"

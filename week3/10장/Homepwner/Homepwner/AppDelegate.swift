@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ItemStore를 만든다. 의존 관계를 역전시킨다..?
         let itemStore = ItemStore()
-        
         // ItemsViewController에 접근하여 itemStore를 설정한다.
         let itemsController = window!.rootViewController as! ItemViewController
         itemsController.itemStore = itemStore
