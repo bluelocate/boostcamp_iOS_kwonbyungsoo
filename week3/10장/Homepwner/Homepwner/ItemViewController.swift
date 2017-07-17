@@ -62,7 +62,7 @@ class ItemViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+        
         // 재사용 셀이나 새로운 셀을 얻는다.
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         
@@ -76,10 +76,16 @@ class ItemViewController: UITableViewController{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Remove"
+    }
+    
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
+
         
+     
         //테이블 뷰가 삭제 명령의 적용을 요청하면
         if editingStyle == .delete {
             let item = itemStore.allItems[indexPath.row]
@@ -92,7 +98,7 @@ class ItemViewController: UITableViewController{
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+            let deleteAction = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
 
                 //저장소에서 그 항목을 제거한다.
                 self.itemStore.removeItem(item: item)
