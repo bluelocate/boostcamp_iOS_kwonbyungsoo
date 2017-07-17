@@ -37,16 +37,6 @@ class MyButton: UIView {
         self.addSubview(myLabel)
         
     }
-    func hellos() {
-        print("hello")
-    }
-    func hello(gestureRecognizer:UIGestureRecognizer) {
-        
-        self.controlState.update(with: .highlighted)
-        
-        print("hello")
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if self.controlState == .normal {
@@ -69,18 +59,6 @@ class MyButton: UIView {
             self.myLabel.text = "selected"
             self.backgroundColor = UIColor.blue
             self.controlState = .normal
-        }
-    }
-    
-    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents){
-        print("hello")
-        switch controlEvents {
-        case UIControlEvents.touchUpInside:
-            print("touch up")
-        case UIControlEvents.touchDown:
-            print("touch down")
-        default:
-            print("default")
         }
     }
     
