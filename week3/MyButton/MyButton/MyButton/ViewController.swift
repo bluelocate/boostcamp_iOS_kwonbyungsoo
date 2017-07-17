@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var myButton: MyButton!
+    var isEnable = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +23,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func enableButton(_ sender: UIButton) {
+        if isEnable{
+            myButton.setDisable()
+            isEnable = false
+        } else {
+            myButton.setEnable()
+            isEnable = true
+        }
+    }
 
 }
 
