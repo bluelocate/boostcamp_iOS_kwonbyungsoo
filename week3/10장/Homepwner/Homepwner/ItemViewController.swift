@@ -63,6 +63,13 @@ class ItemViewController: UITableViewController{
         return itemStore.allItems.count
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle{
+        if indexPath.row == (tableView.numberOfRows(inSection: 0)-1){
+            return .none
+        }
+        return .delete
+    }
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -77,7 +84,6 @@ class ItemViewController: UITableViewController{
             cell.textLabel?.text = "No more Items!"
             cell.detailTextLabel?.text = ""
             cell.isUserInteractionEnabled = false
-            cell.accessibilityPerformEscape()
             return cell
         }
         cell.textLabel?.text = item.name
@@ -93,7 +99,7 @@ class ItemViewController: UITableViewController{
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
-        
+      
         //테이블 뷰가 삭제 명령의 적용을 요청하면
         if editingStyle == .delete {
             let item = itemStore.allItems[indexPath.row]
