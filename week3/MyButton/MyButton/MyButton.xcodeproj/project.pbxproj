@@ -15,6 +15,7 @@
 		4032CC7F1F1C8A4A003A2F64 /* MyButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC7E1F1C8A4A003A2F64 /* MyButtonTests.swift */; };
 		4032CC8A1F1C8B07003A2F64 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC891F1C8B07003A2F64 /* MyButton.swift */; };
 		4032CC8E1F1D144B003A2F64 /* AnotherMyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC8D1F1D144B003A2F64 /* AnotherMyButton.swift */; };
+		4032CC921F1DF73E003A2F64 /* FinalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC911F1DF73E003A2F64 /* FinalButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		4032CC801F1C8A4A003A2F64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4032CC891F1C8B07003A2F64 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		4032CC8D1F1D144B003A2F64 /* AnotherMyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherMyButton.swift; sourceTree = "<group>"; };
+		4032CC911F1DF73E003A2F64 /* FinalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				4032CC6B1F1C8A4A003A2F64 /* ViewController.swift */,
 				4032CC891F1C8B07003A2F64 /* MyButton.swift */,
 				4032CC8D1F1D144B003A2F64 /* AnotherMyButton.swift */,
+				4032CC911F1DF73E003A2F64 /* FinalButton.swift */,
 				4032CC6D1F1C8A4A003A2F64 /* Main.storyboard */,
 				4032CC701F1C8A4A003A2F64 /* Assets.xcassets */,
 				4032CC721F1C8A4A003A2F64 /* LaunchScreen.storyboard */,
@@ -211,6 +214,7 @@
 				4032CC6A1F1C8A4A003A2F64 /* AppDelegate.swift in Sources */,
 				4032CC8A1F1C8B07003A2F64 /* MyButton.swift in Sources */,
 				4032CC8E1F1D144B003A2F64 /* AnotherMyButton.swift in Sources */,
+				4032CC921F1DF73E003A2F64 /* FinalButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +424,7 @@
 				4032CC851F1C8A4A003A2F64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4032CC861F1C8A4A003A2F64 /* Build configuration list for PBXNativeTarget "MyButtonTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +433,7 @@
 				4032CC881F1C8A4A003A2F64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
