@@ -45,13 +45,9 @@ class AnotherMyButton: UIView {
         
         switch self.controlState {
         case UIControlState.normal:
-            myLabel.text = "selected"
-            self.backgroundColor = UIColor.blue
-            controlState = .selected
+            setSelectedState()
         case UIControlState.selected:
-            myLabel.text = "normal"
-            self.backgroundColor = UIColor.gray
-            controlState = .normal
+            setNormalState()
         default:
             break
         }
@@ -61,13 +57,31 @@ class AnotherMyButton: UIView {
         
         switch self.controlState {
         case UIControlState.normal:
-            myLabel.text = "highlighted1"
-            self.backgroundColor = UIColor.white
+            setHighlightedState()
         case UIControlState.selected:
-            myLabel.text = "highlighted2"
-            self.backgroundColor = UIColor.white
+            setAnotherHighlightedState()
         default:
             break
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first!
+        let touchLocation = touch.location(in: self)
+        
+        if self.bounds.contains(touchLocation) {
+            return
+        } else {
+            switch self.controlState {
+            case UIControlState.normal:
+                setNormalState()
+            case UIControlState.selected:
+                setSelectedState()
+            default:
+                break
+            }
+            print("바운드 바깥쪽")
         }
     }
     
@@ -81,4 +95,25 @@ class AnotherMyButton: UIView {
         self.isUserInteractionEnabled = true
     }
     
+    func setSelectedState() {
+        myLabel.text = "selected"
+        self.backgroundColor = UIColor.blue
+        controlState = .selected
+    }
+    
+    func setNormalState() {
+        myLabel.text = "normal"
+        self.backgroundColor = UIColor.gray
+        controlState = .normal
+    }
+    
+    func setHighlightedState() {
+        myLabel.text = "highlighted1"
+        self.backgroundColor = UIColor.white
+    }
+    
+    func setAnotherHighlightedState() {
+        myLabel.text = "highlighted2"
+        self.backgroundColor = UIColor.white
+    }
 }
