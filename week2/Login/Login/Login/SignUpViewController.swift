@@ -19,7 +19,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view 생성!")
-        idTextField.text = userInfo[0].lastName
+        
+        if userInfo.isEmpty {
+            idTextField.text = ""
+        } else {
+            idTextField.text = userInfo[0].lastName
+        }
     }
     
     override func viewDidLoad() {
