@@ -16,6 +16,7 @@ var user = AccessToken.current
 class LoginViewController: UIViewController,UITextFieldDelegate,LoginButtonDelegate {
     
     
+    @IBOutlet weak var myButton: AnotherMyButton!
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
