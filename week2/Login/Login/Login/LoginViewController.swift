@@ -10,14 +10,14 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 
-var userInfo:[UserInfo] = []
-var user = AccessToken.current
+
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var myButton: AnotherMyButton!
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var user = AccessToken.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     if let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "signUpViewController"){
                         self.present(signupViewController, animated: true, completion: nil)
                     }
-                    userInfo.append( UserInfo(firstName: responseDictionary["name"] as? String,
+                    UserInfo.userInfo.append( UserInfo(firstName: responseDictionary["name"] as? String,
                                               lastName: responseDictionary["email"] as? String))
                 }
             }
