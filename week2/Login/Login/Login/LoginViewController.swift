@@ -18,13 +18,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var user = AccessToken.current
-    
+    var name: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Add a custom login button to your app
         let myLoginButton = UIButton(type: .custom)
         myLoginButton.backgroundColor = UIColor.darkGray
-        myLoginButton.frame = CGRect(x: 0, y: 100, width: 180, height: 40)
+        myLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        myLoginButton.frame = CGRect(x: 100, y: 500, width: 180, height: 40)
         myLoginButton.setTitle("My Login Button", for: .normal)
         myLoginButton.addTarget(self, action: #selector(self.loginButtonClicked), for: .touchUpInside)
         view.addSubview(myLoginButton)
@@ -71,12 +72,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 break
             case .success(let graphResponse):
                 if let responseDictionary = graphResponse.dictionaryValue {
-                    
-                    if let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "signUpViewController"){
+                    let name = responseDictionary["name"] as? String ?? ""
+                    if let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "signUpViewController") as? SignUpViewController {
+                        signupViewController.name = name
                         self.present(signupViewController, animated: true, completion: nil)
                     }
-                    UserInfo.userInfo.append( UserInfo(firstName: responseDictionary["name"] as? String,
-                                              lastName: responseDictionary["email"] as? String))
                 }
             }
         }

@@ -15,19 +15,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIImagePickerCo
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var verifyPasswordTextField: UITextField!
-  
+    var name: String?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view 생성!")
-        if UserInfo.userInfo.isEmpty {
-            idTextField.text = ""
-        } else {
-            idTextField.text = UserInfo.userInfo[0].lastName
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        idTextField.text = name
         idTextField.delegate = self
         passwordTextField.delegate = self
         verifyPasswordTextField.delegate = self
