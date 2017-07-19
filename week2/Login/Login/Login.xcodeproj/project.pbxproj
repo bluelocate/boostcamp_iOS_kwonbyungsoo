@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3589FBCF481F459BA8B9E893 /* Pods_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0454D06D677FBD7D3FC72F2 /* Pods_Login.framework */; };
+		4032CC901F1DD7BE003A2F64 /* AnotherMyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC8F1F1DD7BE003A2F64 /* AnotherMyButton.swift */; };
 		40550FF21F1606A70049413B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40550FF11F1606A70049413B /* UserInfo.swift */; };
 		4068D0471F112F4900690CCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068D0461F112F4900690CCA /* AppDelegate.swift */; };
 		4068D0491F112F4900690CCA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4068D0481F112F4900690CCA /* SignUpViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4032CC8F1F1DD7BE003A2F64 /* AnotherMyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherMyButton.swift; sourceTree = "<group>"; };
 		40550FF11F1606A70049413B /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		4068D0431F112F4900690CCA /* Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Login.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4068D0461F112F4900690CCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				40550FF11F1606A70049413B /* UserInfo.swift */,
 				4068D0481F112F4900690CCA /* SignUpViewController.swift */,
 				406FC6631F11D1A7002DFFD9 /* LoginViewController.swift */,
+				4032CC8F1F1DD7BE003A2F64 /* AnotherMyButton.swift */,
 				4068D04A1F112F4900690CCA /* Main.storyboard */,
 				4068D04D1F112F4900690CCA /* Assets.xcassets */,
 				4068D04F1F112F4900690CCA /* LaunchScreen.storyboard */,
@@ -342,6 +345,7 @@
 				406FC6641F11D1A7002DFFD9 /* LoginViewController.swift in Sources */,
 				4068D0491F112F4900690CCA /* SignUpViewController.swift in Sources */,
 				4068D0471F112F4900690CCA /* AppDelegate.swift in Sources */,
+				4032CC901F1DD7BE003A2F64 /* AnotherMyButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ import Foundation
 
 
 struct UserInfo {
+    static var userInfo:[UserInfo] = []
     var firstName: String?
     var lastName: String?
 }
