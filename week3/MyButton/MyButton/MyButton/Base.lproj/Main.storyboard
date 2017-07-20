@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyButton" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47I-Bh-NsD" customClass="AnotherMyButton" customModule="MyButton" customModuleProvider="target">
+                                <rect key="frame" x="16" y="79" width="108" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZZ-j1-elF">
+                                <rect key="frame" x="139" y="318" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Xz3-IW-8n7"/>
+                                </constraints>
+                                <state key="normal" title="Enable Button"/>
+                                <connections>
+                                    <action selector="enableButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ev3-zn-UzY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eZZ-j1-elF" firstAttribute="centerX" secondItem="47I-Bh-NsD" secondAttribute="centerX" constant="117.5" id="38D-6o-FKe"/>
+                            <constraint firstItem="47I-Bh-NsD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9BP-gT-mGg"/>
+                            <constraint firstAttribute="bottom" secondItem="47I-Bh-NsD" secondAttribute="bottom" constant="538" id="Bhx-bK-z4l"/>
+                            <constraint firstItem="47I-Bh-NsD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-117.5" id="Iih-T8-1Ts"/>
+                            <constraint firstItem="47I-Bh-NsD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="59" id="YJq-VF-a0c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="47I-Bh-NsD" secondAttribute="trailing" constant="235" id="h3g-TT-2lU"/>
+                            <constraint firstItem="eZZ-j1-elF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sJZ-4n-9hI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myButton" destination="47I-Bh-NsD" id="bCT-mT-fuP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="42.728635682158924"/>
+        </scene>
+    </scenes>
+</document>
