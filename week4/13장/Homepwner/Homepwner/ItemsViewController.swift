@@ -6,47 +6,42 @@ import UIKit
 
 class ItemsViewController: UITableViewController {
     
-    var itemStore: ItemStore!
-    
-    @IBAction func addNewItem(_ sender: AnyObject) {
-        // Create a new Item and add it to the store
-        let newItem = itemStore.createItem()
-        
-        // Figure out where that item is in the array
-        if let index = itemStore.allItems.index(of: newItem) {
-            let indexPath = IndexPath(row: index, section: 0)
-            
-            // Insert this new row into the table.
-            tableView.insertRows(at: [indexPath], with: .automatic)
+    var itemStore: ItemStore!{
+        didSet {
+            guard itemStore != nil else {
+                assertionFailure("no ItemStore")
+                return
+            }
         }
     }
     
-    @IBAction func toggleEditingMode(_ sender: AnyObject) {
-        // If you are currently in editing mode...
-        if isEditing {
-            // Change text of button to inform user of state
-            sender.setTitle("Edit", for: UIControlState())
-            // Turn off editing mode
-            setEditing(false, animated: true)
-        }
-        else {
-            // Change text of button to inform user of state
-            sender.setTitle("Done", for: UIControlState())
-            // Enter editing mode
-            setEditing(true, animated: true)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    @IBAction func addNewItem(_ sender: AnyObject) {
+        let newItem = itemStore.createItem()
+        if let index = itemStore.allItems.index(of: newItem) {
+            let indexPath = IndexPath(row: index, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get the height of the status bar
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
     
     override func tableView(_ tableView: UITableView,
@@ -62,11 +57,11 @@ class ItemsViewController: UITableViewController {
         let item = itemStore.allItems[indexPath.row]
         let title = "Delete \(item.name)?"
         let message = "Are you sure you want to delete this item?"
-        let ac = UIAlertController(title: title,
-                                   message: message,
-                                   preferredStyle: .actionSheet)
+        let alertContoller = UIAlertController(title: title,
+                                               message: message,
+                                               preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ac.addAction(cancelAction)
+        alertContoller.addAction(cancelAction)
         
         if editingStyle == .delete {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive,
@@ -74,9 +69,8 @@ class ItemsViewController: UITableViewController {
                                                 self.itemStore.removeItem(item)
                                                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             })
-            ac.addAction(deleteAction)
-            // Present the alert controller
-            present(ac, animated: true, completion: nil)
+            alertContoller.addAction(deleteAction)
+            present(alertContoller, animated: true, completion: nil)
         }
     }
     
@@ -95,16 +89,25 @@ class ItemsViewController: UITableViewController {
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         let item = itemStore.allItems[indexPath.row]
-        if item.valueInDollars >= 50 {
-            cell.backgroundColor = UIColor.red
-        } else {
-            cell.backgroundColor = UIColor.green
-        }
         // Item을 가지고 셀을 설정한다.
         cell.nameLabel.text = item.name
         cell.serialNumberLabel.text = item.serialNumber
         cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showItem"?:
+            print("next")
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let item = itemStore.allItems[row]
+                let detailViewController = segue.destination as? DetailViewController
+                detailViewController?.item = item
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
     }
 }
