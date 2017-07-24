@@ -11,22 +11,11 @@ import UIKit
 class DatePickerViewController: UIViewController {
    
     @IBOutlet weak var datePicker: UIDatePicker!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(datePicker.date)
-        guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? DetailViewController else {
+
+    @IBAction func datePicker(_ sender: UIDatePicker) {
+        guard let viewController = navigationController?.viewControllers[1] as? DetailViewController else {
             return
         }
-        detailViewController.date = datePicker.date
-        
-        print(detailViewController.date!)
-    }
-    @IBAction func datePicker(_ sender: UIDatePicker) {
-        
+        viewController.item?.dateCreated = sender.date
     }
 }

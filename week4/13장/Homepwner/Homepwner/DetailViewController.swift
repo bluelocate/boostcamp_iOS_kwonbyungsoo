@@ -46,13 +46,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         guard let item = self.item else {
             return
         }
-        
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: date ?? item.dateCreated)
-        print("date : \(date)")
-        print(item.dateCreated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
