@@ -8,7 +8,10 @@
 
 import Foundation
 
+var manager = ResultManager.resultManager
+
 struct ResultManager {
+    static var resultManager = ResultManager()
     var history: [ResultData] = []
     var arrangedResult: [ResultData] = []
     init() {

@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameView: UIView!
     var gameViews: GameViews!
     var resultData: ResultData!
-    var resultManager = ResultManager()
+    
     var count = 1
     var timer:Timer?
     var startTime: Double = 0
@@ -89,8 +89,8 @@ class GameViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.name = alertController.textFields?[0].text
             let result = ResultData(name: self.name!, time: stringTime)
-            self.resultManager.history.append(result)
-            let bestData = self.bestScore(resultData: self.resultManager.history)
+            manager.history.append(result)
+            let bestData = self.bestScore(resultData: manager.history)
             self.nameLabel.text = bestData.name
             self.clearTimeLabel.text = bestData.time
         })
@@ -105,9 +105,8 @@ class GameViewController: UIViewController {
     func bestScore(resultData: [ResultData]) -> ResultData {
         print("best Score")
         let arrangedData = resultData.sorted(by: {$0.time < $1.time})
-        resultManager.arrangedResult = arrangedData
+        manager.arrangedResult = arrangedData
         return arrangedData[0]
-        
     }
     
     @IBAction func startAction(_ sender: UIButton) {
