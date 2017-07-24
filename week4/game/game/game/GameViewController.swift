@@ -10,18 +10,24 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var clearTimeLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var gameView: UIView!
     var gameViews: GameViews!
+    var resultData: ResultData!
+    var resultManager = ResultManager()
     var count = 1
     var timer:Timer?
     var startTime: Double = 0
     var resultTime = Date()
     var name: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     func gameTimer(timer: Timer) {
@@ -57,31 +63,51 @@ class GameViewController: UIViewController {
         }
         
         if count == 2 {
-            endGame()
+            count = 1
             timer?.invalidate()
             self.timer = nil
+            startButton.isHidden = false
+            gameView.bringSubview(toFront: startButton)
+
+            endGame()
+            
         }
     }
     
     func endGame() {
         print("game over!")
+
         
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "mm:ss:SS"
-        print(dateFormat.string(from: resultTime))
+        let stringTime = dateFormat.string(from: self.resultTime)
+        print(stringTime)
         self.timer?.invalidate()
         self.timer = nil
         
         let alertController = UIAlertController(title: "Clear!", message: "Congratuations!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.name = alertController.textFields?[0].text
+            let result = ResultData(name: self.name!, time: stringTime)
+            self.resultManager.history.append(result)
+            let bestData = self.bestScore(resultData: self.resultManager.history)
+            self.nameLabel.text = bestData.name
+            self.clearTimeLabel.text = bestData.time
         })
         alertController.addAction(okAction)
         alertController.addTextField { UITextField in
             UITextField.placeholder = "이름을 입력해 주세요."
         }
-        
         present(alertController, animated: true, completion: nil)
+       
+    }
+    
+    func bestScore(resultData: [ResultData]) -> ResultData {
+        print("best Score")
+        let arrangedData = resultData.sorted(by: {$0.time < $1.time})
+        resultManager.arrangedResult = arrangedData
+        return arrangedData[0]
+        
     }
     
     @IBAction func startAction(_ sender: UIButton) {
