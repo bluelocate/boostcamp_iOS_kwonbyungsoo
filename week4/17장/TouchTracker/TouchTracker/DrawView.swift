@@ -31,18 +31,20 @@ class DrawView: UIView {
         }
     }
     
+    // 선에 대한 설정들
     func strokeLine(line: Line) {
         let path = UIBezierPath()
         path.lineWidth = lineThickness
         path.lineCapStyle = CGLineCap.round
+        degreeColor(line: line)
+        finishedLineColor.setStroke()
         path.move(to: line.begin)
         path.addLine(to: line.end)
         path.stroke()
     }
     
+    // 그리자
     override func draw(_ rect: CGRect) {
-        
-        finishedLineColor.setStroke()
         for line in finishedLines {
             strokeLine(line: line)
         }
@@ -52,7 +54,6 @@ class DrawView: UIView {
         for (_, line) in currentLines {
             strokeLine(line: line)
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,12 +73,14 @@ class DrawView: UIView {
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             currentLines[key]?.end = touch.location(in: self)
+            degreeColor(line: currentLines[key]!)
         }
         setNeedsDisplay()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print(#function)
+        
         for touch in touches {
             let key = NSValue(nonretainedObject: touch)
             if var line = currentLines[key] {
@@ -88,11 +91,23 @@ class DrawView: UIView {
         }
         setNeedsDisplay()
     }
-    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         print(#function)
         currentLines.removeAll()
         setNeedsDisplay()
     }
     
+    func degreeColor(line: Line){
+        let radian = atan2(-(line.end.y - line.begin.y), line.end.x - line.begin.x)
+        let degree = radian * 180 / CGFloat.pi
+        print(degree)
+        switch degree {
+        case -180 ... -90:
+            finishedLineColor = UIColor.brown
+        case -89 ... 0:
+            finishedLineColor = UIColor.red
+        default:
+            finishedLineColor = UIColor.darkGray
+        }
+    }
 }
