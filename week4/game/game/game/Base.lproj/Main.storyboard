@@ -110,7 +110,26 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNb-ew-8p5">
                                 <rect key="frame" x="37.5" y="133.5" width="300" height="400"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0te-IY-YR6">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="Press to Start!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startAction:" destination="7Zt-Ci-9x9" eventType="touchUpInside" id="L7m-e5-YiO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0te-IY-YR6" secondAttribute="bottom" id="Nxg-Dd-bZM"/>
+                                    <constraint firstItem="0te-IY-YR6" firstAttribute="leading" secondItem="uNb-ew-8p5" secondAttribute="leading" id="VDB-Se-6Hi"/>
+                                    <constraint firstAttribute="trailing" secondItem="0te-IY-YR6" secondAttribute="trailing" id="c3H-Cd-q7Q"/>
+                                    <constraint firstItem="0te-IY-YR6" firstAttribute="top" secondItem="uNb-ew-8p5" secondAttribute="top" id="wsV-vm-MiI"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJu-Y2-FT7">
                                 <rect key="frame" x="52" y="617" width="46" height="30"/>
@@ -125,8 +144,8 @@
                                     <segue destination="HUM-ME-rvy" kind="show" id="Xwu-uk-FpU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--:--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbD-BT-WRe">
-                                <rect key="frame" x="303" y="56" width="56" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--:--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbD-BT-WRe">
+                                <rect key="frame" x="241" y="56" width="118" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -143,6 +162,8 @@
                     </view>
                     <connections>
                         <outlet property="gameView" destination="uNb-ew-8p5" id="NMe-ku-jq2"/>
+                        <outlet property="startButton" destination="0te-IY-YR6" id="neY-Zo-L8y"/>
+                        <outlet property="timeLabel" destination="AbD-BT-WRe" id="Oc9-Ph-qGC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWu-xZ-iYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
