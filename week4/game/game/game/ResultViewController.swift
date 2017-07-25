@@ -24,25 +24,25 @@ class ResultViewController: UIViewController{
     @IBAction func closeAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func resetAction(_ sender: UIButton) {
         manager.arrangedResult.removeAll()
         manager.history.removeAll()
         resultTableView.reloadData()
+        manager.saveChanged()
     }
-    
 }
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return manager.arrangedResult.count
+        return manager.history.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
-        
-        cell.textLabel?.text = manager.arrangedResult[indexPath.row].name
-        cell.detailTextLabel?.text = manager.arrangedResult[indexPath.row].time
+        cell.textLabel?.text = manager.history[indexPath.row].name
+        cell.detailTextLabel?.text = manager.history[indexPath.row].time
         return cell
     }
 }

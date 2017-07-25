@@ -17,19 +17,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameView: UIView!
     var gameViews: GameViews!
     var resultData: ResultData!
-    
     var count = 1
     var timer:Timer?
     var startTime: Double = 0
     var resultTime = Date()
     var name: String?
     
-
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameLabel.text = "\(manager.history.sorted(by: {$0.time > $1.time}).first?.name ?? "--")"
+        clearTimeLabel.text = "\(manager.history.sorted(by: {$0.time > $1.time}).first?.time ?? "--:--:--")"
     }
     
     func gameTimer(timer: Timer) {
@@ -92,6 +89,7 @@ class GameViewController: UIViewController {
             self.name = alertController.textFields?[0].text
             let result = ResultData(name: self.name!, time: stringTime)
             manager.history.append(result)
+            manager.saveChanged()
             let bestData = self.bestScore(resultData: manager.history)
             self.nameLabel.text = bestData.name
             self.clearTimeLabel.text = bestData.time
@@ -118,7 +116,6 @@ class GameViewController: UIViewController {
                               width: gameView.frame.width,
                               height: gameView.frame.height)
         gameStart(button: gameViews.boardButtons)
-
         self.timer?.invalidate()
         self.timer = nil
         startTime = Date().timeIntervalSinceReferenceDate

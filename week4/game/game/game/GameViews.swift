@@ -48,6 +48,4 @@ struct GameViews {
         print("\(temporaryBoard.count)")
         boardButtons = temporaryBoard
     }
-    
-    
 }
