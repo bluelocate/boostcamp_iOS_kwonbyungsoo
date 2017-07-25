@@ -23,6 +23,8 @@ class GameViewController: UIViewController {
     var startTime: Double = 0
     var resultTime = Date()
     var name: String?
+    
+
 
     
     override func viewDidLoad() {

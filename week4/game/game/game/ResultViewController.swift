@@ -26,6 +26,7 @@ class ResultViewController: UIViewController{
     }
     @IBAction func resetAction(_ sender: UIButton) {
         manager.arrangedResult.removeAll()
+        manager.history.removeAll()
         resultTableView.reloadData()
     }
     
