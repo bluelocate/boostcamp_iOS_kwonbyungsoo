@@ -15,8 +15,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var gameView: UIView!
-    var gameViews: GameViews!
-    var resultData: ResultData!
+    var gameViews: GameViews?
+    var resultData: ResultData?
     var count = 1
     var timer:Timer?
     var startTime: Double = 0
@@ -30,10 +30,8 @@ class GameViewController: UIViewController {
     }
     
     func gameTimer(timer: Timer) {
-        
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "mm:ss:SS"
-        
         let referenceDate = Date(timeIntervalSince1970: 0)
         resultTime = referenceDate + Date().timeIntervalSinceReferenceDate - startTime
         self.timeLabel.text = dateFormat.string(from: resultTime)
@@ -60,7 +58,6 @@ class GameViewController: UIViewController {
             button.isHidden = true
             count += 1
         }
-        
         if count == 2 {
             count = 1
             timer?.invalidate()
@@ -69,14 +66,11 @@ class GameViewController: UIViewController {
             gameView.bringSubview(toFront: startButton)
 
             endGame()
-            
         }
     }
     
     func endGame() {
         print("game over!")
-
-        
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "mm:ss:SS"
         let stringTime = dateFormat.string(from: self.resultTime)
@@ -86,9 +80,12 @@ class GameViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Clear!", message: "Congratuations!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            
             self.name = alertController.textFields?[0].text
-            let result = ResultData(name: self.name!, time: stringTime)
-            manager.history.append(result)
+            if let name = self.name {
+            let result = ResultData(name: name, time: stringTime)
+                manager.history.append(result)
+            }
             manager.saveChanged()
             let bestData = self.bestScore(resultData: manager.history)
             self.nameLabel.text = bestData.name
@@ -103,7 +100,6 @@ class GameViewController: UIViewController {
     }
     
     func bestScore(resultData: [ResultData]) -> ResultData {
-        print("best Score")
         let arrangedData = resultData.sorted(by: {$0.time < $1.time})
         manager.arrangedResult = arrangedData
         return arrangedData[0]
@@ -115,7 +111,10 @@ class GameViewController: UIViewController {
         gameViews = GameViews(superView: gameView,
                               width: gameView.frame.width,
                               height: gameView.frame.height)
-        gameStart(button: gameViews.boardButtons)
+        if let views = gameViews?.boardButtons {
+            gameStart(button: views)
+        }
+       
         self.timer?.invalidate()
         self.timer = nil
         startTime = Date().timeIntervalSinceReferenceDate

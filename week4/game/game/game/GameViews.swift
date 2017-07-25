@@ -27,7 +27,6 @@ struct GameViews {
         guard let shuffleNumber = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: numberSet) as? [Int] else {
             return
         }
-        
         var index = 0
         for i in 0 ... 4 {
             for j in 0 ... 4 {
