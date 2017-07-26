@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		40115B4D1F22FBE300FC736D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40115B4C1F22FBE300FC736D /* AppDelegate.swift */; };
-		40115B4F1F22FBE300FC736D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40115B4E1F22FBE300FC736D /* ViewController.swift */; };
 		40115B521F22FBE300FC736D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40115B501F22FBE300FC736D /* Main.storyboard */; };
 		40115B541F22FBE300FC736D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40115B531F22FBE300FC736D /* Assets.xcassets */; };
 		40115B571F22FBE300FC736D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40115B551F22FBE300FC736D /* LaunchScreen.storyboard */; };
 		40115B621F22FBE400FC736D /* BulletinBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40115B611F22FBE400FC736D /* BulletinBoardTests.swift */; };
 		40115B6F1F22FCBE00FC736D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40115B6E1F22FCBE00FC736D /* SnapKit.framework */; };
+		40FB426F1F284F77007A99DD /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB426E1F284F77007A99DD /* BoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,6 @@
 /* Begin PBXFileReference section */
 		40115B491F22FBE300FC736D /* BulletinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BulletinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40115B4C1F22FBE300FC736D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40115B4E1F22FBE300FC736D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		40115B511F22FBE300FC736D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40115B531F22FBE300FC736D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40115B561F22FBE300FC736D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		40115B611F22FBE400FC736D /* BulletinBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardTests.swift; sourceTree = "<group>"; };
 		40115B631F22FBE400FC736D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40115B6E1F22FCBE00FC736D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		40FB426E1F284F77007A99DD /* BoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				40115B4C1F22FBE300FC736D /* AppDelegate.swift */,
-				40115B4E1F22FBE300FC736D /* ViewController.swift */,
 				40115B501F22FBE300FC736D /* Main.storyboard */,
 				40115B531F22FBE300FC736D /* Assets.xcassets */,
 				40115B551F22FBE300FC736D /* LaunchScreen.storyboard */,
 				40115B581F22FBE300FC736D /* Info.plist */,
+				40FB426E1F284F77007A99DD /* BoardViewController.swift */,
 			);
 			path = BulletinBoard;
 			sourceTree = "<group>";
@@ -231,8 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40115B4F1F22FBE300FC736D /* ViewController.swift in Sources */,
 				40115B4D1F22FBE300FC736D /* AppDelegate.swift in Sources */,
+				40FB426F1F284F77007A99DD /* BoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
