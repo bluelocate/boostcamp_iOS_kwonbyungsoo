@@ -66,8 +66,22 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         item?.valueInDollars = value.intValue
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+        let segueway = segue.destination as? DatePickerViewController
+        print("datepicker 의 delegate 는 나다.")
+        segueway?.datePickerDelegate = self
+    }
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+}
+
+
+extension DetailViewController: DatePickerDelegate {
+    func didSelectDate(date: Date) {
+        print("데이트가 바꼈다.")
+        item?.dateCreated = date
     }
 }

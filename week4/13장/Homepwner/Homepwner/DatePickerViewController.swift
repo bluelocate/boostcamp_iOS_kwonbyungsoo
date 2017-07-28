@@ -8,14 +8,23 @@
 
 import UIKit
 
+protocol DatePickerDelegate: class {
+    func didSelectDate(date:Date)
+}
+
 class DatePickerViewController: UIViewController {
    
     @IBOutlet weak var datePicker: UIDatePicker!
+    var datePickerDelegate: DatePickerDelegate!
 
     @IBAction func datePicker(_ sender: UIDatePicker) {
-        guard let viewController = navigationController?.viewControllers[1] as? DetailViewController else {
-            return
-        }
-        viewController.item?.dateCreated = sender.date
+
+        print("데이트를 설정했다.")
+        datePickerDelegate.didSelectDate(date: sender.date)
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
 }
