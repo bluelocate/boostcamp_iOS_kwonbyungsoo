@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40115B711F234B2900FC736D /* YagomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40115B701F234B2900FC736D /* YagomButton.swift */; };
 		4032CC6A1F1C8A4A003A2F64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC691F1C8A4A003A2F64 /* AppDelegate.swift */; };
 		4032CC6C1F1C8A4A003A2F64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC6B1F1C8A4A003A2F64 /* ViewController.swift */; };
 		4032CC6F1F1C8A4A003A2F64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4032CC6D1F1C8A4A003A2F64 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40115B701F234B2900FC736D /* YagomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YagomButton.swift; sourceTree = "<group>"; };
 		4032CC661F1C8A4A003A2F64 /* MyButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4032CC691F1C8A4A003A2F64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4032CC6B1F1C8A4A003A2F64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				4032CC6B1F1C8A4A003A2F64 /* ViewController.swift */,
 				4032CC891F1C8B07003A2F64 /* MyButton.swift */,
 				4032CC8D1F1D144B003A2F64 /* AnotherMyButton.swift */,
+				40115B701F234B2900FC736D /* YagomButton.swift */,
 				4032CC6D1F1C8A4A003A2F64 /* Main.storyboard */,
 				4032CC701F1C8A4A003A2F64 /* Assets.xcassets */,
 				4032CC721F1C8A4A003A2F64 /* LaunchScreen.storyboard */,
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40115B711F234B2900FC736D /* YagomButton.swift in Sources */,
 				4032CC6C1F1C8A4A003A2F64 /* ViewController.swift in Sources */,
 				4032CC6A1F1C8A4A003A2F64 /* AppDelegate.swift in Sources */,
 				4032CC8A1F1C8B07003A2F64 /* MyButton.swift in Sources */,
