@@ -103,6 +103,23 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func deleteImage(_ sender: UIBarButtonItem) {
+        guard let item = self.item else {
+            return
+        }
+        let alertController = UIAlertController(title: "Really?",
+                                                message: "delete??",
+                                                preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.imageStore?.deleteImage(forKey: item.itemKey)
+            self.imageView.image = nil
+        }
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let segueway = segue.destination as? DatePickerViewController

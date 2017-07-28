@@ -191,6 +191,12 @@
                                             <action selector="takePicture:" destination="ITM-Lx-bxj" id="LWl-sk-1pU"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Cxj-i9-Ci7"/>
+                                    <barButtonItem systemItem="trash" id="csh-FH-fv7">
+                                        <connections>
+                                            <action selector="deleteImage:" destination="ITM-Lx-bxj" id="kOx-fT-fep"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
