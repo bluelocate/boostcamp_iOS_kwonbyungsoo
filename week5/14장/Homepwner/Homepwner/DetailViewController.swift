@@ -80,7 +80,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         guard let item = self.item else {
             return
         }
-        
+
         imageStore?.setImage(image: image, forkey: item.itemKey)
         imageView.image = image
         dismiss(animated: true, completion: nil)
@@ -91,7 +91,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     }
     
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
-    
+        
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
@@ -99,6 +99,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             imagePicker.sourceType = .photoLibrary
         }
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
     
