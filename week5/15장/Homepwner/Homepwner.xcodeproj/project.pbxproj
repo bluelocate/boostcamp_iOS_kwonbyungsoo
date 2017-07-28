@@ -88,6 +88,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		404B0A0B1F2B620100832F76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B64C1221B84C9C900288BE3 /* Item.swift */,
+				404B0A091F2B52D300832F76 /* ImageStore.swift */,
+				6B64C1241B84CB3F00288BE3 /* ItemStore.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		404B0A0C1F2B621500832F76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4032CC5B1F1C8543003A2F64 /* ItemCell.swift */,
+				405349B61F24C85A000755D3 /* CustomTextField.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		404B0A0D1F2B622800832F76 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B64C1201B84C8EB00288BE3 /* ItemsViewController.swift */,
+				405349B01F23BB33000755D3 /* DetailViewController.swift */,
+				405349B81F24D993000755D3 /* DatePickerViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		6B64C0E61B84C7C300288BE3 = {
 			isa = PBXGroup;
 			children = (
@@ -116,14 +145,9 @@
 				6B64C0F91B84C7C300288BE3 /* Assets.xcassets */,
 				6B64C0FB1B84C7C300288BE3 /* LaunchScreen.storyboard */,
 				6B64C0FE1B84C7C300288BE3 /* Info.plist */,
-				405349B61F24C85A000755D3 /* CustomTextField.swift */,
-				6B64C1201B84C8EB00288BE3 /* ItemsViewController.swift */,
-				405349B01F23BB33000755D3 /* DetailViewController.swift */,
-				405349B81F24D993000755D3 /* DatePickerViewController.swift */,
-				6B64C1221B84C9C900288BE3 /* Item.swift */,
-				4032CC5B1F1C8543003A2F64 /* ItemCell.swift */,
-				404B0A091F2B52D300832F76 /* ImageStore.swift */,
-				6B64C1241B84CB3F00288BE3 /* ItemStore.swift */,
+				404B0A0B1F2B620100832F76 /* Model */,
+				404B0A0C1F2B621500832F76 /* View */,
+				404B0A0D1F2B622800832F76 /* Controller */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";

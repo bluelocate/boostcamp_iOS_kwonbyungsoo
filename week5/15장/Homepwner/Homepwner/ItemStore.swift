@@ -7,8 +7,21 @@ import Foundation
 class ItemStore {
     
     var allItems: [Item] = []
+    let itemArchiveURL: URL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        guard let documentDirectory = documentsDirectories.first else {
+            fatalError("wrong Path!")
+        }
+        return documentDirectory.appendingPathComponent("item.archive")
+        
+    }()
     
-
+    init() {
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] {
+            allItems += archivedItems
+        }
+    }
+    
     func moveItemAtIndex(_ fromIndex: Int, toIndex: Int) {
         if fromIndex == toIndex {
             return
@@ -36,6 +49,13 @@ class ItemStore {
         if let index = allItems.index(of: item) {
             allItems.remove(at: index)
         }
+    }
+    
+    func saveChanged() -> Bool {
+        
+        print("Saving items to: \(itemArchiveURL.path)")
+        
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path)
     }
     
 }

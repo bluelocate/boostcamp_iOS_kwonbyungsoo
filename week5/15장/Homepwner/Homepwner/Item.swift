@@ -4,7 +4,7 @@
 
 import Foundation
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
     
     var name: String
     var valueInDollars: Int
@@ -13,11 +13,22 @@ class Item: NSObject {
     let itemKey: String
     
     init(name: String, serialNumber: String?, valueInDollars: Int) {
+       
         self.name = name
         self.serialNumber = serialNumber
         self.valueInDollars = valueInDollars
         self.dateCreated = Date()
         self.itemKey = NSUUID().uuidString
+       
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(dateCreated, forKey: "dateCreated")
+        aCoder.encode(itemKey, forKey: "itemKey")
+        aCoder.encode(serialNumber, forKey: "serialNumber")
+        aCoder.encode(valueInDollars, forKey: "valueInDollars")
+        
     }
     
     convenience init(random: Bool = false) {
@@ -25,7 +36,7 @@ class Item: NSObject {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
             return
         }
-
+        
         let adjectives = ["Fluffy", "Rusty", "Shiny"]
         let nouns = ["Bear", "Spork", "Mac"]
         var idx = arc4random_uniform(UInt32(adjectives.count))
@@ -40,5 +51,14 @@ class Item: NSObject {
                   serialNumber: randomSerialNumber,
                   valueInDollars: randomValue)
     }
-    
+
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
+        dateCreated = aDecoder.decodeObject(forKey: "dateCreated") as? Date ?? Date()
+        itemKey = aDecoder.decodeObject(forKey: "itemKey") as? String ?? ""
+        serialNumber = aDecoder.decodeObject(forKey: "serialNumber") as? String? ?? ""
+        valueInDollars = aDecoder.decodeInteger(forKey: "valueInDollars")
+
+        super.init()
+    }
 }
