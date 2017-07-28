@@ -100,6 +100,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         }
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.cameraOverlayView? = (UIImageView.init(image: (#imageLiteral(resourceName: "로도"))))
+        imagePicker.cameraOverlayView?.center = view.center.applying(CGAffineTransform(translationX: 0.0, y: -50.0))
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
