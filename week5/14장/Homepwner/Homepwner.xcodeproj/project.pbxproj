@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4032CC5C1F1C8543003A2F64 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4032CC5B1F1C8543003A2F64 /* ItemCell.swift */; };
+		404B0A0A1F2B52D300832F76 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A091F2B52D300832F76 /* ImageStore.swift */; };
 		405349B11F23BB33000755D3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405349B01F23BB33000755D3 /* DetailViewController.swift */; };
 		405349B71F24C85A000755D3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405349B61F24C85A000755D3 /* CustomTextField.swift */; };
 		405349B91F24D993000755D3 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405349B81F24D993000755D3 /* DatePickerViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		4032CC5B1F1C8543003A2F64 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		404B0A091F2B52D300832F76 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		405349B01F23BB33000755D3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		405349B61F24C85A000755D3 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		405349B81F24D993000755D3 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				405349B81F24D993000755D3 /* DatePickerViewController.swift */,
 				6B64C1221B84C9C900288BE3 /* Item.swift */,
 				4032CC5B1F1C8543003A2F64 /* ItemCell.swift */,
+				404B0A091F2B52D300832F76 /* ImageStore.swift */,
 				6B64C1241B84CB3F00288BE3 /* ItemStore.swift */,
 			);
 			path = Homepwner;
@@ -210,6 +213,7 @@
 				TargetAttributes = {
 					6B64C0EE1B84C7C300288BE3 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9PZPL5979H;
 						LastSwiftMigration = 0830;
 					};
 					6B64C1021B84C7C300288BE3 = {
@@ -281,6 +285,7 @@
 				6B64C1231B84C9C900288BE3 /* Item.swift in Sources */,
 				6B64C1251B84CB3F00288BE3 /* ItemStore.swift in Sources */,
 				405349B91F24D993000755D3 /* DatePickerViewController.swift in Sources */,
+				404B0A0A1F2B52D300832F76 /* ImageStore.swift in Sources */,
 				405349B11F23BB33000755D3 /* DetailViewController.swift in Sources */,
 				6B64C0F31B84C7C300288BE3 /* AppDelegate.swift in Sources */,
 				4032CC5C1F1C8543003A2F64 /* ItemCell.swift in Sources */,
@@ -428,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9PZPL5979H;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdranch.Homepwner;
@@ -440,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9PZPL5979H;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bignerdranch.Homepwner;
