@@ -21,17 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pj3-ff-Bne">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pj3-ff-Bne">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Pj3-ff-Bne" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="H1d-MG-XuB"/>
-                            <constraint firstAttribute="trailing" secondItem="Pj3-ff-Bne" secondAttribute="trailing" id="hth-zQ-hZm"/>
-                            <constraint firstItem="Pj3-ff-Bne" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kK3-VT-53Q"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Pj3-ff-Bne" secondAttribute="bottom" id="lP8-Fv-0CT"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="lCg-ET-bCI"/>
                     <connections>
