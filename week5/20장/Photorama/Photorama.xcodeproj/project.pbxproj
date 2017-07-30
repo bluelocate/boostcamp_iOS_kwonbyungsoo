@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		404B0A1B1F2B993700832F76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A1A1F2B993700832F76 /* AppDelegate.swift */; };
-		404B0A1D1F2B993700832F76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A1C1F2B993700832F76 /* ViewController.swift */; };
 		404B0A201F2B993700832F76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A1E1F2B993700832F76 /* Main.storyboard */; };
 		404B0A221F2B993700832F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A211F2B993700832F76 /* Assets.xcassets */; };
 		404B0A251F2B993700832F76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A231F2B993700832F76 /* LaunchScreen.storyboard */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		404B0A171F2B993700832F76 /* Photorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404B0A1A1F2B993700832F76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		404B0A1C1F2B993700832F76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		404B0A1F1F2B993700832F76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		404B0A211F2B993700832F76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		404B0A241F2B993700832F76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				404B0A2E1F2B9ED700832F76 /* FlickrAPI.swift */,
 				404B0A321F2BACF100832F76 /* Photo.swift */,
 				404B0A301F2BA82E00832F76 /* PhotoStore.swift */,
-				404B0A341F2DC2D600832F76 /* PhotoDataSource.swift */,
 				404B0A381F2DD5BE00832F76 /* ImageStore.swift */,
 			);
 			name = Model;
@@ -106,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				404B0A3D1F2DD8C200832F76 /* PhotoInfoViewController.swift */,
-				404B0A1C1F2B993700832F76 /* ViewController.swift */,
 				404B0A2C1F2B999B00832F76 /* PhotosViewController.swift */,
+				404B0A341F2DC2D600832F76 /* PhotoDataSource.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -192,7 +189,6 @@
 				404B0A311F2BA82E00832F76 /* PhotoStore.swift in Sources */,
 				404B0A2D1F2B999B00832F76 /* PhotosViewController.swift in Sources */,
 				404B0A391F2DD5BE00832F76 /* ImageStore.swift in Sources */,
-				404B0A1D1F2B993700832F76 /* ViewController.swift in Sources */,
 				404B0A1B1F2B993700832F76 /* AppDelegate.swift in Sources */,
 				404B0A2F1F2B9ED700832F76 /* FlickrAPI.swift in Sources */,
 			);

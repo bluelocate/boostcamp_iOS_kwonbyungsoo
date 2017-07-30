@@ -13,6 +13,7 @@ class PhotosViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     var store: PhotoStore?
     let photoDataSource = PhotoDataSource()
+    let collectionViewLayout = UICollectionViewFlowLayout()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +51,7 @@ class PhotosViewController: UIViewController {
 }
 
 extension PhotosViewController: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let photo = photoDataSource.photos[indexPath.row]
         store?.fetchImage(for: photo, completion: { (result) -> Void in
@@ -65,5 +66,24 @@ extension PhotosViewController: UICollectionViewDelegate {
                 cell.update(with: image)
             }
         })
+    }
+}
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.frame.width - 2, height: collectionView.frame.height - 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(2, 2, 2, 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
     }
 }
