@@ -22,8 +22,6 @@ class Photo {
         self.remoteURL = remoteURL
         self.dateTaken = dateTaken
     }
-    
-   
 }
 
 extension Photo: Equatable {
