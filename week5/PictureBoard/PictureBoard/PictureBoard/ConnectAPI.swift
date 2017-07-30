@@ -17,6 +17,9 @@ enum Method: String {
 
 struct ConnectAPI {
     
+    var userID: String?
+    var userPassword: String?
+    
     static let baseURLString = "https://ios-api.boostcamp.connect.or.kr/"
     
     static func allURL() -> URL {
@@ -38,15 +41,14 @@ struct ConnectAPI {
     
     func newUser(email: String, password: String, nickName: String) {
         let body = ["email" : email, "password" : password, "nickname" : nickName]
-        makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/user")!, body: body as [String : AnyObject], httpMethod: "POST")
+        makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/user")!, body: body as [String : AnyObject], httpMethod: "POST", completion: {
+            signUpInfo in
+            return
+        })
     }
     
-    func login(email: String, password: String) {
-        let body = ["email" : email, "password" : password]
-        makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!, body: body as [String : AnyObject], httpMethod: "POST")
-    }
-
-    func makeNewRequest(url: URL, body: [String : AnyObject], httpMethod: String) {
+    
+    func makeNewRequest(url: URL, body: [String : Any], httpMethod: String, completion: @escaping (SignUpInfo) -> Void) {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = httpMethod
@@ -56,10 +58,27 @@ struct ConnectAPI {
                                                       options: JSONSerialization.WritingOptions.prettyPrinted)
             request.httpBody = jsonBody
             let session = URLSession.shared
-            
             let task = session.dataTask(with: request,
-                                        completionHandler: { (data, response, error) in
-                    print(response.debugDescription)
+                                        completionHandler:
+                {
+                    (data, response, error) in
+                    if let data = data {
+                        
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: [])
+                            print(json)
+                            
+                            guard let result = self.authUser(fromJSON: json as! [String : Any]) else {
+                                return
+                            }
+                            completion(result)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 {
+                        print("status code should be code : \(httpStatus.statusCode)")
+                    }
             })
             task.resume()
         } catch {
@@ -67,5 +86,13 @@ struct ConnectAPI {
         }
     }
     
-
+    func authUser(fromJSON json: [String : Any]) -> SignUpInfo? {
+        guard
+            let id = json["email"] as? String,
+            let password = json["password"] as? String else {
+                return nil
+        }
+        return SignUpInfo(id: id, password: password)
+    }
+    
 }

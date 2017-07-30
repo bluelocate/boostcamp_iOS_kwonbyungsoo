@@ -21,4 +21,9 @@ class SignUpInfo {
         self.password = password
     }
     
+    init(id:String, password: String) {
+        self.id = id
+        self.password = password
+        self.nickname = ""
+    }
    }

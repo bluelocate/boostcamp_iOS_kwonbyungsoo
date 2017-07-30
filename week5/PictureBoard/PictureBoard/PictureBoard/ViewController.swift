@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
     let connectAPI = ConnectAPI()
@@ -22,12 +22,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sharedInfo.requestArticleListInfo()
         sharedInfo.requestArticleInfo()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func loginButton(_ sender: UIButton) {
         guard let idText = idTextField.text else {
             return
@@ -40,10 +40,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
         }
         
-        connectAPI.login(email: idText, password: passwordText)
+        login(email: idText, password: passwordText)
         
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -56,6 +56,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func login(email: String, password: String) {
+        let body = ["email" : email, "password" : password]
+        connectAPI.makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!,
+                                  body: body as [String : Any],
+                                  httpMethod: "POST", completion: {(SignUpInfo) -> Void in
+                                    if SignUpInfo.id == email && SignUpInfo.password == password {
+                                        
+                                        print("정보가 같습니다.")
+                                    }
+    
+        })
     }
 }
 
