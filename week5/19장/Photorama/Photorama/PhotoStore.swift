@@ -39,6 +39,21 @@ class PhotoStore {
         task.resume()
     }
     
+    func fetchRecentPhotos(completion: @escaping (PhotosResult) -> Void) {
+        
+        let url = FlickrAPI.recentPhotosURL
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) {
+            (data, response, error) -> Void in
+            print(response.debugDescription)
+            let result = self.processPhotosRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
     private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult {
         guard let jsonData = data else {
             return .failure(error!)

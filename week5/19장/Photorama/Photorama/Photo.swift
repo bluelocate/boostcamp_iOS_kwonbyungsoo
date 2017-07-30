@@ -11,11 +11,11 @@ import Foundation
 // 웹 서비스에서 반환된 각 사진 정보.
 class Photo {
     
-    let title: String
+    private let title: String
+    private let photoID: String
+    private let dateTaken: Date
     let remoteURL: URL
-    let photoID: String
-    let dateTaken: Date
- 
+    
     init(title: String, photoID: String, remoteURL: URL, dateTaken: Date) {
         self.title = title
         self.photoID = photoID

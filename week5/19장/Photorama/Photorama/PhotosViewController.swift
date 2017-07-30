@@ -16,7 +16,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store?.fetchInterestingPhotos {
+        store?.fetchRecentPhotos {
             (PhotosResult) -> Void in
             switch PhotosResult {
             case let .success(photos):
@@ -30,7 +30,7 @@ class PhotosViewController: UIViewController {
         }
     }
     
-    func updateImageVIew(for photo: Photo) {
+    private func updateImageVIew(for photo: Photo) {
         store?.fetchImage(for: photo, completion: { (ImageResult) -> Void in
             switch ImageResult {
             case let .success(image):
