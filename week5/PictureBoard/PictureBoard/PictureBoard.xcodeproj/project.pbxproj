@@ -12,6 +12,9 @@
 		404B0A511F2E1E9E00832F76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A4F1F2E1E9E00832F76 /* Main.storyboard */; };
 		404B0A531F2E1E9E00832F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A521F2E1E9E00832F76 /* Assets.xcassets */; };
 		404B0A561F2E1E9E00832F76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404B0A541F2E1E9E00832F76 /* LaunchScreen.storyboard */; };
+		404B0A5E1F2E1FAD00832F76 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A5D1F2E1FAD00832F76 /* SignUpViewController.swift */; };
+		404B0A601F2E223000832F76 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A5F1F2E223000832F76 /* SignUpInfo.swift */; };
+		404B0A621F2E22E400832F76 /* InfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A611F2E22E400832F76 /* InfoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		404B0A521F2E1E9E00832F76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		404B0A551F2E1E9E00832F76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		404B0A571F2E1E9E00832F76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		404B0A5D1F2E1FAD00832F76 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		404B0A5F1F2E223000832F76 /* SignUpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
+		404B0A611F2E22E400832F76 /* InfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,9 @@
 				404B0A4B1F2E1E9E00832F76 /* AppDelegate.swift */,
 				404B0A4D1F2E1E9E00832F76 /* ViewController.swift */,
 				404B0A4F1F2E1E9E00832F76 /* Main.storyboard */,
+				404B0A5D1F2E1FAD00832F76 /* SignUpViewController.swift */,
+				404B0A611F2E22E400832F76 /* InfoManager.swift */,
+				404B0A5F1F2E223000832F76 /* SignUpInfo.swift */,
 				404B0A521F2E1E9E00832F76 /* Assets.xcassets */,
 				404B0A541F2E1E9E00832F76 /* LaunchScreen.storyboard */,
 				404B0A571F2E1E9E00832F76 /* Info.plist */,
@@ -137,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404B0A5E1F2E1FAD00832F76 /* SignUpViewController.swift in Sources */,
+				404B0A621F2E22E400832F76 /* InfoManager.swift in Sources */,
+				404B0A601F2E223000832F76 /* SignUpInfo.swift in Sources */,
 				404B0A4E1F2E1E9E00832F76 /* ViewController.swift in Sources */,
 				404B0A4C1F2E1E9E00832F76 /* AppDelegate.swift in Sources */,
 			);
