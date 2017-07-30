@@ -57,7 +57,10 @@ class PhotoStore {
     
     private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult {
         guard let jsonData = data else {
-            return .failure(error!)
+            guard let error = error else {
+                preconditionFailure("fail to open error")
+            }
+            return .failure(error)
         }
         return FlickrAPI.photos(fromJson: jsonData)
     }
@@ -92,10 +95,11 @@ class PhotoStore {
             let imageData = data,
             let image = UIImage(data: imageData) else {
                 if data == nil {
-                    return .failure(error!)
-                } else {
-                    return .failure(PhotoError.imageCreationError)
+                    if let error = error {
+                        return .failure(error)
+                    }
                 }
+                return .failure(PhotoError.imageCreationError)
         }
         return .success(image)
     }

@@ -18,7 +18,7 @@ class PhotosViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = photoDataSource
-        store?.fetchRecentPhotos {
+        store?.fetchInterestingPhotos {
             (PhotosResult) -> Void in
             switch PhotosResult {
             case let .success(photos):
@@ -31,12 +31,27 @@ class PhotosViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showPhoto"?:
+            if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
+                let photo = photoDataSource.photos[selectedIndexPath.row]
+                guard  let destinationViewController = segue.destination as? PhotoInfoViewController else {
+                    preconditionFailure("not to convert photoinfoViewController")
+                }
+                destinationViewController.photo = photo
+                destinationViewController.store = store
+            }
+        default:
+            preconditionFailure("unexpected segue identifier")
+        }
+    }
 }
 
 extension PhotosViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         let photo = photoDataSource.photos[indexPath.row]
         store?.fetchImage(for: photo, completion: { (result) -> Void in
             guard let photoIndex = self.photoDataSource.photos.index(of: photo) else {
@@ -49,7 +64,6 @@ extension PhotosViewController: UICollectionViewDelegate {
             if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell {
                 cell.update(with: image)
             }
-            
         })
     }
 }

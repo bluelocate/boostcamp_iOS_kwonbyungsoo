@@ -14,7 +14,6 @@ class PhotoDataSource: NSObject {
     
 }
 
-
 extension PhotoDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -23,8 +22,10 @@ extension PhotoDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = "PhotoCollectionViewCell"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as!  PhotoCollectionViewCell
-        
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as?  PhotoCollectionViewCell {
+            return cell
+        } else {
+            return PhotoCollectionViewCell.init()
+        }
     }
 }
