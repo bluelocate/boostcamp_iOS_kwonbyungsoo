@@ -8,8 +8,9 @@
 
 import UIKit
 
-struct SignUpInfo {
+class SignUpInfo {
     
+  
     var id: String
     var nickname: String
     var password: String
@@ -19,4 +20,5 @@ struct SignUpInfo {
         self.nickname = nickname
         self.password = password
     }
-}
+    
+   }

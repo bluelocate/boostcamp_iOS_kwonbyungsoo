@@ -15,6 +15,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
     
+    let connectAPI = ConnectAPI()
+    
     @IBAction func signUpAction(_ sender: UIButton) {
         guard let idText = idTextField.text else {
             return
@@ -40,7 +42,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                                  nickname: nicknameText,
                                                  password: passwordText))
                 alertAction(title: "", message: "가입되었습니다!")
-                print(sharedInfo.info)
+                connectAPI.newUser(email: idText, password: passwordText, nickName: nicknameText)
             }
         } else {
             alertAction(title: "no '@'", message: "It's error")

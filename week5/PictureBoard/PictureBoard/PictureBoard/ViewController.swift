@@ -12,9 +12,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
+    let connectAPI = ConnectAPI()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sharedInfo.requestAllInfo()
+        sharedInfo.requestSignUpInfo()
+        sharedInfo.requestUserInfo()
+        sharedInfo.requestArticleListInfo()
+        sharedInfo.requestArticleInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,18 +40,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
         }
         
-        for item in sharedInfo.info {
-            if idText == item.id && passwordText == item.password {
-                guard let imageBoardViewController = storyboard?.instantiateViewController(withIdentifier: "imageViewController") as? ImageBoardViewController else {
-                    return
-                }
-                show(imageBoardViewController, sender: self)
-                break
-            } else {
-                alertAction(title: "", message: "아이디 혹은 비밀번호가 다릅니다.")
-                break
-            }
-        }
+        connectAPI.login(email: idText, password: passwordText)
+        
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
