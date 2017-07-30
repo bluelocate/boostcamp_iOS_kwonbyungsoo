@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let passwordChek = passwordCheckTextField.text else {
             return
         }
-        if idText.isEmpty && nicknameText.isEmpty && passwordText.isEmpty && passwordChek.isEmpty {
+        if idText.isEmpty || nicknameText.isEmpty || passwordText.isEmpty || passwordChek.isEmpty {
             alertAction(title: "", message: "모든 항목을 입력해 주세요,")
         }
         
@@ -39,6 +39,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 sharedInfo.info.append(SignUpInfo(id: idText,
                                                  nickname: nicknameText,
                                                  password: passwordText))
+                alertAction(title: "", message: "가입되었습니다!")
+                print(sharedInfo.info)
             }
         } else {
             alertAction(title: "no '@'", message: "It's error")
@@ -52,11 +54,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
-        
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
     }
 }
 
