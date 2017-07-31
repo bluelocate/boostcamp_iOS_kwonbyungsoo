@@ -53,21 +53,27 @@ struct ConnectAPI {
                 {
                     (data, response, error) in
                     if let data = data {
-                        
                         do {
                             let json = try JSONSerialization.jsonObject(with: data, options: [])
                             print(json)
-                            
-                            guard let result = self.authUser(fromJSON: json as! [String : Any]) else {
+                            guard let httpStatus = response as? HTTPURLResponse else{
                                 return
                             }
-                            completion(result)
+                            print("status code should be code : \(httpStatus.statusCode)")
+                            guard let result = self.authUser(fromJSON: json as! [String : Any],
+                                                             statusCode: httpStatus.statusCode)
+                                else {
+                                    completion(self.authUser(fromJSON: json as! [String : Any],
+                                                             statusCode: httpStatus.statusCode)!)
+                                    return
+                            }
+                            OperationQueue.main.addOperation {
+                                completion(result)
+                            }
+                            
                         } catch {
                             print(error)
                         }
-                    }
-                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 {
-                        print("status code should be code : \(httpStatus.statusCode)")
                     }
             })
             task.resume()
@@ -76,13 +82,13 @@ struct ConnectAPI {
         }
     }
     
-    func authUser(fromJSON json: [String : Any]) -> SignUpInfo? {
+    func authUser(fromJSON json: [String : Any], statusCode: Int) -> SignUpInfo? {
         guard
             let id = json["email"] as? String,
             let password = json["password"] as? String else {
-                return nil
+                return SignUpInfo(id: "", password: "", statusCode: statusCode)
         }
-        return SignUpInfo(id: id, password: password)
+        return SignUpInfo(id: id, password: password, statusCode: statusCode)
     }
     
 }

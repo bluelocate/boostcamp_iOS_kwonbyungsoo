@@ -34,10 +34,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if idText.isEmpty || passwordText.isEmpty {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
+            return
         }
-        
         login(email: idText, password: passwordText)
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -60,9 +59,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         connectAPI.makeNewRequest(
             url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!,
             body: body as [String : Any],
-            httpMethod: "POST", completion: {(SignUpInfo) -> Void in
+            httpMethod: "POST",
+            completion:
+            {
+                (SignUpInfo) -> Void in
                 if SignUpInfo.id == email && SignUpInfo.password == password {
                     print("정보가 같습니다.")
+                    print("\(SignUpInfo.statusCode)")
+                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "imageTabViewController")
+                    self.present(viewController!, animated: true, completion: nil)
+                }
+                if SignUpInfo.statusCode == 401 {
+                    print("비밀번호 혹은 아이디가 다릅니다.")
+                    self.alertAction(title: "", message: "비밀번호 혹은 아이디가 다릅니다.")
                 }
         })
     }

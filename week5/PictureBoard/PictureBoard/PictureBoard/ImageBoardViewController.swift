@@ -9,22 +9,23 @@
 import UIKit
 
 class ImageBoardViewController: UIViewController {
-    
-    @IBOutlet var imageTableView: UITableView!
-}
-
-extension ImageBoardViewController: UITableViewDelegate {
-    
-}
-
-extension ImageBoardViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath)
-        return cell
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
+
+//extension ImageBoardViewController: UITableViewDelegate {
+//    
+//}
+//
+//extension ImageBoardViewController: UITableViewDataSource {
+//    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 10
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath)
+//        return cell
+//    }
+//}
