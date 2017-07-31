@@ -6,4 +6,14 @@
 //  Copyright © 2017년 5InQueue. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ImageBoardViewCell: UITableViewCell {
+    
+    @IBOutlet var createdDate: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var boardImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var descLabel: UILabel!
+    
+}

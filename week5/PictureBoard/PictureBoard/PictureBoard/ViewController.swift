@@ -16,7 +16,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sharedInfo.requestAllInfo(url: connectAPI.allURL)
+        connectAPI.getArticle(url: connectAPI.allURL, completion: {
+            (ImageBoardInfo) -> Void in
+            print(ImageBoardInfo)
+        })
+       
     }
     
     override func didReceiveMemoryWarning() {

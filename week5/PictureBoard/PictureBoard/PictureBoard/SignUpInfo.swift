@@ -15,7 +15,6 @@ class SignUpInfo {
     var nickname: String
     var password: String
     var statusCode: Int
-    
     init(id: String, nickname: String, password: String) {
         self.id = id
         self.nickname = nickname

@@ -18,6 +18,8 @@
 		404B0A641F2E2D9A00832F76 /* ImageBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A631F2E2D9A00832F76 /* ImageBoardViewController.swift */; };
 		404B0A681F2E308900832F76 /* ImageBoardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A671F2E308900832F76 /* ImageBoardViewCell.swift */; };
 		404B0A6F1F2E351E00832F76 /* ConnectAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A6E1F2E351E00832F76 /* ConnectAPI.swift */; };
+		404B0A731F2EF70300832F76 /* ImageBoardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A721F2EF70300832F76 /* ImageBoardInfo.swift */; };
+		404B0A751F2EF96000832F76 /* ImageBoardInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A741F2EF96000832F76 /* ImageBoardInfoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		404B0A631F2E2D9A00832F76 /* ImageBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardViewController.swift; sourceTree = "<group>"; };
 		404B0A671F2E308900832F76 /* ImageBoardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardViewCell.swift; sourceTree = "<group>"; };
 		404B0A6E1F2E351E00832F76 /* ConnectAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectAPI.swift; sourceTree = "<group>"; };
+		404B0A721F2EF70300832F76 /* ImageBoardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardInfo.swift; sourceTree = "<group>"; };
+		404B0A741F2EF96000832F76 /* ImageBoardInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardInfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				404B0A5F1F2E223000832F76 /* SignUpInfo.swift */,
 				404B0A611F2E22E400832F76 /* InfoManager.swift */,
 				404B0A6E1F2E351E00832F76 /* ConnectAPI.swift */,
+				404B0A721F2EF70300832F76 /* ImageBoardInfo.swift */,
+				404B0A741F2EF96000832F76 /* ImageBoardInfoManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -185,7 +191,9 @@
 				404B0A4E1F2E1E9E00832F76 /* ViewController.swift in Sources */,
 				404B0A4C1F2E1E9E00832F76 /* AppDelegate.swift in Sources */,
 				404B0A641F2E2D9A00832F76 /* ImageBoardViewController.swift in Sources */,
+				404B0A751F2EF96000832F76 /* ImageBoardInfoManager.swift in Sources */,
 				404B0A681F2E308900832F76 /* ImageBoardViewCell.swift in Sources */,
+				404B0A731F2EF70300832F76 /* ImageBoardInfo.swift in Sources */,
 				404B0A6F1F2E351E00832F76 /* ConnectAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
