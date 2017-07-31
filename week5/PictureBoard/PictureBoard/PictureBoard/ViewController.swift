@@ -16,11 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sharedInfo.requestAllInfo()
-        sharedInfo.requestSignUpInfo()
-        sharedInfo.requestUserInfo()
-        sharedInfo.requestArticleListInfo()
-        sharedInfo.requestArticleInfo()
+        sharedInfo.requestAllInfo(url: connectAPI.allURL)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,14 +57,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login(email: String, password: String) {
         let body = ["email" : email, "password" : password]
-        connectAPI.makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!,
-                                  body: body as [String : Any],
-                                  httpMethod: "POST", completion: {(SignUpInfo) -> Void in
-                                    if SignUpInfo.id == email && SignUpInfo.password == password {
-                                        
-                                        print("정보가 같습니다.")
-                                    }
-    
+        connectAPI.makeNewRequest(
+            url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!,
+            body: body as [String : Any],
+            httpMethod: "POST", completion: {(SignUpInfo) -> Void in
+                if SignUpInfo.id == email && SignUpInfo.password == password {
+                    print("정보가 같습니다.")
+                }
         })
     }
 }

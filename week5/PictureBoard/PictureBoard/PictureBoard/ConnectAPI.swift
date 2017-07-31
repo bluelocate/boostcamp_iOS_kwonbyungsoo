@@ -15,28 +15,19 @@ enum Method: String {
     case article = "image/:article_id:"
 }
 
+enum StatusCode: Int {
+    case ok = 200
+    case success = 201
+}
+
 struct ConnectAPI {
     
+    static let baseURLString = "https://ios-api.boostcamp.connect.or.kr/"
     var userID: String?
     var userPassword: String?
-    
-    static let baseURLString = "https://ios-api.boostcamp.connect.or.kr/"
-    
-    static func allURL() -> URL {
+    var allURL:URL = {
         return URL(string: baseURLString)!
-    }
-    static func loginURL() -> URL {
-        return URL(string: "\(baseURLString)\(Method.login)")!
-    }
-    static func userURL() -> URL {
-        return URL(string: "\(baseURLString)\(Method.user)")!
-    }
-    static func articleListURL() -> URL {
-        return URL(string: "\(baseURLString)\(Method.articleList)")!
-    }
-    static func articleURL() -> URL {
-        return URL(string: "\(baseURLString)\(Method.article)")!
-    }
+    }()
     
     
     func newUser(email: String, password: String, nickName: String) {
@@ -46,7 +37,6 @@ struct ConnectAPI {
             return
         })
     }
-    
     
     func makeNewRequest(url: URL, body: [String : Any], httpMethod: String, completion: @escaping (SignUpInfo) -> Void) {
         var request = URLRequest(url: url)
