@@ -95,17 +95,6 @@ struct ConnectAPI {
         task.resume()
     }
     
-    func newUser(email: String, password: String, nickName: String) {
-        let body = ["email" : email, "password" : password, "nickname" : nickName]
-        makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/user")!,
-                       body: body as [String : AnyObject],
-                       httpMethod: "POST",
-                       completion: {
-                        signUpInfo in
-                        return
-        })
-    }
-    
     func makeNewRequest(url: URL,
                         body: [String : Any],
                         httpMethod: String,
@@ -155,18 +144,18 @@ struct ConnectAPI {
     }
     
     func addArticleRequest(url: URL,
-                        body: [String : Any],
-                        httpMethod: String,
-                        completion: @escaping (ImageBoardInfo) -> Void) {
+                           body: [String : Any],
+                           httpMethod: String) {
         
         var request = URLRequest(url: url)
-        request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpMethod = httpMethod
         
+
         do {
-            let jsonBody = try JSONSerialization.data(withJSONObject: body,
-                                                      options: JSONSerialization.WritingOptions.prettyPrinted)
-            request.httpBody = jsonBody
+            request.httpBody = createBody(parameters: body, boundary: boundary, data: UIImageJPEGRepresentation(#imageLiteral(resourceName: "chicken.jpg"), 0.7)!, mimeType: "image/jpg", filename: "chicken.jpg")
             let session = URLSession.shared
             let task = session.dataTask(with: request,
                                         completionHandler:
@@ -180,10 +169,6 @@ struct ConnectAPI {
                                 return
                             }
                             print("status code should be code : \(httpStatus.statusCode)")
-                            let result = self.addArticle()
-                            OperationQueue.main.addOperation {
-                                completion(result!)
-                            }
                         } catch {
                             print(error)
                         }
@@ -195,11 +180,31 @@ struct ConnectAPI {
         }
     }
     
-    func addArticle() -> ImageBoardInfo? {
+    func createBody(parameters: [String:Any],
+                    boundary: String,
+                    data: Data,
+                    mimeType: String,
+                    filename: String) -> Data {
+        let body = NSMutableData()
+        let boundaryPrefix = "--\(boundary)\r\n"
         
-        return  ImageBoardInfo(imageURL: URL(string: "")!, title: "", description: "", nickName: "", createdDate: 0)
+        for (key, value) in parameters {
+            body.appendString(boundaryPrefix)
+            body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.appendString("\(value)\r\n")
+        }
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"image_data\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        
+        return body as Data
+        
     }
-    
+
     func authUser(fromJSON json: [String : Any], statusCode: Int) -> SignUpInfo? {
         guard
             let id = json["email"] as? String,
@@ -207,5 +212,13 @@ struct ConnectAPI {
                 return SignUpInfo(id: "", password: "", statusCode: statusCode)
         }
         return SignUpInfo(id: id, password: password, statusCode: statusCode)
+    }
+    
+}
+
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
     }
 }

@@ -42,7 +42,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                                  nickname: nicknameText,
                                                  password: passwordText))
                 alertAction(title: "", message: "가입되었습니다!")
-                connectAPI.newUser(email: idText, password: passwordText, nickName: nicknameText)
+                self.newUser(email: idText, password: passwordText, nickName: nicknameText)
             }
         } else {
             alertAction(title: "no '@'", message: "It's error")
@@ -61,6 +61,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    
+    func newUser(email: String, password: String, nickName: String) {
+        let body = ["email" : email, "password" : password, "nickname" : nickName]
+        connectAPI.makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/user")!,
+                       body: body as [String : Any],
+                       httpMethod: "POST",
+                       completion: {
+                        signUpInfo in
+                        return
+        })
     }
 }
 

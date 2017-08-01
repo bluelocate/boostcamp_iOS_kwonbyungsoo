@@ -20,6 +20,10 @@
 		404B0A6F1F2E351E00832F76 /* ConnectAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A6E1F2E351E00832F76 /* ConnectAPI.swift */; };
 		404B0A731F2EF70300832F76 /* ImageBoardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A721F2EF70300832F76 /* ImageBoardInfo.swift */; };
 		404B0A751F2EF96000832F76 /* ImageBoardInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404B0A741F2EF96000832F76 /* ImageBoardInfoManager.swift */; };
+		407BD2C21F2F21C600F1CBAE /* AddArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BD2C11F2F21C600F1CBAE /* AddArticleViewController.swift */; };
+		407BD2C41F2F51F300F1CBAE /* samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 407BD2C31F2F51F300F1CBAE /* samples.png */; };
+		407BD2C61F303C5C00F1CBAE /* samplePhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 407BD2C51F303C5C00F1CBAE /* samplePhoto.jpg */; };
+		407BD2C81F3043F500F1CBAE /* chicken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 407BD2C71F3043F500F1CBAE /* chicken.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		404B0A6E1F2E351E00832F76 /* ConnectAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectAPI.swift; sourceTree = "<group>"; };
 		404B0A721F2EF70300832F76 /* ImageBoardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardInfo.swift; sourceTree = "<group>"; };
 		404B0A741F2EF96000832F76 /* ImageBoardInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBoardInfoManager.swift; sourceTree = "<group>"; };
+		407BD2C11F2F21C600F1CBAE /* AddArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddArticleViewController.swift; sourceTree = "<group>"; };
+		407BD2C31F2F51F300F1CBAE /* samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = samples.png; sourceTree = "<group>"; };
+		407BD2C51F303C5C00F1CBAE /* samplePhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = samplePhoto.jpg; sourceTree = "<group>"; };
+		407BD2C71F3043F500F1CBAE /* chicken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chicken.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,9 @@
 		404B0A4A1F2E1E9E00832F76 /* PictureBoard */ = {
 			isa = PBXGroup;
 			children = (
+				407BD2C71F3043F500F1CBAE /* chicken.jpg */,
+				407BD2C51F303C5C00F1CBAE /* samplePhoto.jpg */,
+				407BD2C31F2F51F300F1CBAE /* samples.png */,
 				404B0A4B1F2E1E9E00832F76 /* AppDelegate.swift */,
 				404B0A661F2E302600832F76 /* Controller */,
 				404B0A4F1F2E1E9E00832F76 /* Main.storyboard */,
@@ -100,6 +111,7 @@
 				404B0A4D1F2E1E9E00832F76 /* ViewController.swift */,
 				404B0A5D1F2E1FAD00832F76 /* SignUpViewController.swift */,
 				404B0A631F2E2D9A00832F76 /* ImageBoardViewController.swift */,
+				407BD2C11F2F21C600F1CBAE /* AddArticleViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				404B0A561F2E1E9E00832F76 /* LaunchScreen.storyboard in Resources */,
+				407BD2C81F3043F500F1CBAE /* chicken.jpg in Resources */,
 				404B0A531F2E1E9E00832F76 /* Assets.xcassets in Resources */,
 				404B0A511F2E1E9E00832F76 /* Main.storyboard in Resources */,
+				407BD2C61F303C5C00F1CBAE /* samplePhoto.jpg in Resources */,
+				407BD2C41F2F51F300F1CBAE /* samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +209,7 @@
 				404B0A751F2EF96000832F76 /* ImageBoardInfoManager.swift in Sources */,
 				404B0A681F2E308900832F76 /* ImageBoardViewCell.swift in Sources */,
 				404B0A731F2EF70300832F76 /* ImageBoardInfo.swift in Sources */,
+				407BD2C21F2F21C600F1CBAE /* AddArticleViewController.swift in Sources */,
 				404B0A6F1F2E351E00832F76 /* ConnectAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

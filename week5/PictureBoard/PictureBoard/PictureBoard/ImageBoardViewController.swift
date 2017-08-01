@@ -41,7 +41,7 @@ extension ImageBoardViewController: UITableViewDataSource {
         print(sharedImageInfo.imageBoardInfo[indexPath.row].title)
         cell.titleLabel.text = info.title
         cell.descLabel.text = info.description
-        cell.createdDate.text = String(info.createdDate)
+        cell.createdDate.text = String(describing: info.createdDate)
         cell.imageView?.image = sharedImageInfo.imageArray[indexPath.row]
         cell.imageView?.sizeToFit()
         return cell
