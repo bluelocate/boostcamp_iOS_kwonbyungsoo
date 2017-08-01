@@ -20,17 +20,6 @@ class AddArticleViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let url = URL(string: "\(urlList.baseURL)") else {
-            return
-        }
-        connectAPI.getArticle(url: url, completion: {
-            (ImageBoardInfo) -> Void in
-            print(ImageBoardInfo)
-        })
-    }
-    
     @IBAction func clickAddButton(_ sender: UIBarButtonItem) {
         
         guard let titleText = titleLabel.text,
@@ -50,7 +39,7 @@ class AddArticleViewController: UIViewController {
     
     func addArticle(title: String, desc: String) {
         
-        let body = ["image_title" : "오늘 저녁은 치킨이닭!! ","image_desc": "아직 지우는걸 구현 못했어요 죄송.."]
+        let body = ["image_title" : title,"image_desc": desc]
         guard let url = URL(string: "\(urlList.addArticle)") else { return }
         guard let image = imageView.image else { return }
         imageView.image?.accessibilityIdentifier = "myImage.jpg"
@@ -58,7 +47,7 @@ class AddArticleViewController: UIViewController {
                                      body: body as [String : String],
                                      httpMethod: "POST",
                                      image: image,
-                                     imageTitle: imageView.image?.accessibilityIdentifier ?? "")
+                                     imageTitle: "myImage.jpg")
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
