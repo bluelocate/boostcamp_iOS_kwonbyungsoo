@@ -12,18 +12,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var idTextField: UITextField!
+   
     let connectAPI = ConnectAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = URL(string: "\(urlList.baseURL)") else {
-            return 
-        }
+        guard let url = URL(string: "\(urlList.baseURL)") else { return }
         connectAPI.getArticle(url: url, completion: {
             (ImageBoardInfo) -> Void in
             print(ImageBoardInfo)
         })
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,12 +30,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
-        guard let idText = idTextField.text else {
-            return
-        }
-        guard let passwordText = passwordTextField.text else {
-            return
-        }
+        guard let idText = idTextField.text else { return }
+        guard let passwordText = passwordTextField.text else { return }
         
         if idText.isEmpty || passwordText.isEmpty {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
@@ -63,9 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login(email: String, password: String) {
         let body = ["email" : email, "password" : password]
-        guard let url = URL(string:"\(urlList.login))") else {
-            return
-        }
+        guard let url = URL(string:"\(urlList.login))") else { return }
         connectAPI.makeNewRequest(
             url: url,
             body: body as [String : Any],
@@ -76,9 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if SignUpInfo.id == email && SignUpInfo.password == password {
                     print("정보가 같습니다.")
                     print("\(SignUpInfo.statusCode)")
-                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier:  "imageTabViewController") else {
-                        return
-                    }
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier:  "imageTabViewController") else { return }
                     self.present(viewController, animated: true, completion: nil)
                 }
                 if SignUpInfo.statusCode == 401 {

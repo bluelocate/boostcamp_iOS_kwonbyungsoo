@@ -9,11 +9,19 @@
 import UIKit
 
 class ImageBoardViewController: UIViewController {
+
+    @IBOutlet var tableView: UITableView!
+ 
     let connectAPI = ConnectAPI()
     
-    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        tableView.reloadData()
     }
 }
 

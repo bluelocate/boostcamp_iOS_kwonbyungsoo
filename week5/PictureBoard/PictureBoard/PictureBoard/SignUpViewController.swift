@@ -17,13 +17,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     let connectAPI = ConnectAPI()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     @IBAction func signUpAction(_ sender: UIButton) {
         guard let idText = idTextField.text,
             let nicknameText = nicknameTextField.text,
             let passwordText = passwordTextField.text,
-            let passwordChek = passwordCheckTextField.text else {
-                return
-        }
+            let passwordChek = passwordCheckTextField.text else { return }
         
         if idText.isEmpty || nicknameText.isEmpty ||
             passwordText.isEmpty || passwordChek.isEmpty {
@@ -31,7 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if idText.contains("@") {
+        if idText.contains("@") && !idText.hasSuffix("@") && !idText.hasPrefix("@") {
             if !(passwordTextField.text == passwordCheckTextField.text) {
                 alertAction(title: "Not same password", message: "please check")
             } else {
@@ -62,17 +63,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func newUser(email: String, password: String, nickName: String) {
         let body = ["email" : email, "password" : password, "nickname" : nickName]
-        guard let url = URL(string: "\(urlList.signUp)") else {
-            return
-        }
+        guard let url = URL(string: "\(urlList.signUp)") else { return }
         connectAPI.makeNewRequest(url: url,
                                   body: body as [String : Any],
                                   httpMethod: "POST",
                                   completion: {
                                     signUpInfo in
                                     print(signUpInfo)
-                                    return
-        })
+                                    return })
     }
 }
 

@@ -17,7 +17,6 @@ enum urlList: String {
 }
 struct ConnectAPI {
     
-    
     var userID: String?
     var userPassword: String?
     let session: URLSession = {
@@ -33,9 +32,7 @@ struct ConnectAPI {
                     let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
                     print(json)
                     guard let jsons = json as? [[String : Any]],
-                        let result = self.getArticleInformation(fromJSON: jsons) else {
-                            return
-                    }
+                        let result = self.getArticleInformation(fromJSON: jsons) else { return }
                     OperationQueue.main.addOperation {
                         completion(result)
                     }
@@ -55,15 +52,11 @@ struct ConnectAPI {
                 let imageURL = json[index]["thumb_image_url"] as? String,
                 let imageDesc = json[index]["image_desc"] as? String,
                 let authorNickName = json[index]["author_nickname"] as? String,
-                let createdDate = json[index]["created_at"] as? Int else {
-                    return nil
-            }
-            self.fetchImage(url: imageURL, completion: { (UIImage) in
-                sharedImageInfo.imageArray.append(UIImage)
-            })
-            guard let url = URL(string: imageURL) else {
-                return nil
-            }
+                let createdDate = json[index]["created_at"] as? Int else { return nil }
+            self.fetchImage(url: imageURL, completion: {
+                (UIImage) in
+                sharedImageInfo.imageArray.append(UIImage) })
+            guard let url = URL(string: imageURL) else { return nil }
             sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: url,
                                                                  title: imageTitle,
                                                                  description: imageDesc,
@@ -75,11 +68,10 @@ struct ConnectAPI {
     
     func fetchImage(url: String, completion: @escaping (UIImage) -> Void) {
         
-        guard let photoURL = URL(string: "\(urlList.baseURL)\(url)") else {
-            return
-        }
+        guard let photoURL = URL(string: "\(urlList.baseURL)\(url)") else { return }
         let request = URLRequest(url: photoURL)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
             if let data = data,
                 let image = UIImage(data: data) {
                 OperationQueue.main.addOperation {
@@ -112,17 +104,13 @@ struct ConnectAPI {
                         do {
                             let json = try JSONSerialization.jsonObject(with: data, options: [])
                             print(json)
-                            guard let httpStatus = response as? HTTPURLResponse else{
-                                return
-                            }
+                            guard let httpStatus = response as? HTTPURLResponse else{ return }
                             print("status code should be code : \(httpStatus.statusCode)")
                             
                             guard
                                 let jsons = json as? [String : Any],
                                 let result = self.authUser(fromJSON: jsons,
-                                                           statusCode: httpStatus.statusCode) else {
-                                                            return
-                            }
+                                                           statusCode: httpStatus.statusCode) else { return }
                             OperationQueue.main.addOperation {
                                 completion(result)
                             }
@@ -148,44 +136,38 @@ struct ConnectAPI {
     
     func addArticleRequest(url: URL,
                            body: [String : Any],
-                           httpMethod: String) {
+                           httpMethod: String,
+                           image: UIImage,
+                           imageTitle: String) {
         
         var request = URLRequest(url: url)
         let boundary = "Boundary-\(UUID().uuidString)"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpMethod = httpMethod
         
-        do {
-            guard let data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "samplePhoto.jpg"), 0.7) else {
-                return
-            }
-            request.httpBody = createBody(parameters: body,
-                                          boundary: boundary,
-                                          data: data,
-                                          mimeType: "image/jpg",
-                                          filename: "chicken.jpg")
-            let session = URLSession.shared
-            let task = session.dataTask(with: request,
-                                        completionHandler:
-                {
-                    (data, response, error) in
-                    if let data = data {
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data, options: [])
-                            print(json)
-                            guard let httpStatus = response as? HTTPURLResponse else {
-                                return
-                            }
-                            print("status code should be code : \(httpStatus.statusCode)")
-                        } catch {
-                            print(error)
-                        }
+        guard let imageData = UIImageJPEGRepresentation(image, 0.7) else { return }
+        request.httpBody = createBody(parameters: body,
+                                      boundary: boundary,
+                                      data: imageData,
+                                      mimeType: "image/jpg",
+                                      filename: "\(imageTitle)")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request,
+                                    completionHandler:
+            {
+                (data, response, error) in
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                        guard let httpStatus = response as? HTTPURLResponse else { return }
+                        print("status code should be code : \(httpStatus.statusCode)")
+                    } catch {
+                        print(error)
                     }
-            })
-            task.resume()
-        } catch {
-            print("something going to wrong!")
-        }
+                }
+        })
+        task.resume()
     }
     
     func createBody(parameters: [String:Any],

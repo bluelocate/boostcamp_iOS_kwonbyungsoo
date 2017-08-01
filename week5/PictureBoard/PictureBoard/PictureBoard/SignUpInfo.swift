@@ -6,11 +6,10 @@
 //  Copyright © 2017년 5InQueue. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class SignUpInfo {
     
-  
     var id: String
     var nickname: String
     var password: String
