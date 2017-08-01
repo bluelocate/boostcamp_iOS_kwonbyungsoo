@@ -16,11 +16,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        connectAPI.getArticle(url: connectAPI.allURL, completion: {
+        guard let url = URL(string: "\(urlList.baseURL)") else {
+            return 
+        }
+        connectAPI.getArticle(url: url, completion: {
             (ImageBoardInfo) -> Void in
             print(ImageBoardInfo)
         })
-       
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,8 +63,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login(email: String, password: String) {
         let body = ["email" : email, "password" : password]
+        guard let url = URL(string:"\(urlList.login))") else {
+            return
+        }
         connectAPI.makeNewRequest(
-            url: URL(string:"https://ios-api.boostcamp.connect.or.kr/login")!,
+            url: url,
             body: body as [String : Any],
             httpMethod: "POST",
             completion:
@@ -70,8 +76,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 if SignUpInfo.id == email && SignUpInfo.password == password {
                     print("정보가 같습니다.")
                     print("\(SignUpInfo.statusCode)")
-                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "imageTabViewController")
-                    self.present(viewController!, animated: true, completion: nil)
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier:  "imageTabViewController") else {
+                        return
+                    }
+                    self.present(viewController, animated: true, completion: nil)
                 }
                 if SignUpInfo.statusCode == 401 {
                     print("비밀번호 혹은 아이디가 다릅니다.")

@@ -14,12 +14,6 @@ class ImageBoardViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-      
     }
 }
 
@@ -36,14 +30,15 @@ extension ImageBoardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath) as!ImageBoardViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath) as?ImageBoardViewCell else {
+            return UITableViewCell()
+        }
         let info = sharedImageInfo.imageBoardInfo[indexPath.row]
-        print(sharedImageInfo.imageBoardInfo[indexPath.row].title)
         cell.titleLabel.text = info.title
         cell.descLabel.text = info.description
         cell.createdDate.text = String(describing: info.createdDate)
         cell.imageView?.image = sharedImageInfo.imageArray[indexPath.row]
-        cell.imageView?.sizeToFit()
+        cell.imageView?.sizeThatFits(CGSize(width: 60, height: 60))
         return cell
     }
 }

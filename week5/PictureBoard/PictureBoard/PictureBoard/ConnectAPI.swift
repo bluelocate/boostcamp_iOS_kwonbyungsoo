@@ -8,43 +8,36 @@
 
 import UIKit
 
-enum Method: String {
-    case login = "login"
-    case user = "user"
-    case articleList = "image"
-    case article = "image/:article_id:"
-}
 
-enum StatusCode: Int {
-    case ok = 200
-    case success = 201
+enum urlList: String {
+    case baseURL = "https://ios-api.boostcamp.connect.or.kr"
+    case login = "https://ios-api.boostcamp.connect.or.kr/login"
+    case signUp = "https://ios-api.boostcamp.connect.or.kr/user"
+    case addArticle = "https://ios-api.boostcamp.connect.or.kr/image"
 }
-
 struct ConnectAPI {
     
-    static let baseURLString = "https://ios-api.boostcamp.connect.or.kr"
+    
     var userID: String?
     var userPassword: String?
-    var allURL:URL = {
-        return URL(string: baseURLString)!
-    }()
-    
     let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
     
     func getArticle(url: URL, completion: @escaping ([ImageBoardInfo]) -> Void) {
-        
         let task = session.dataTask(with: url) {
             (data, response, error) in
             if let jsonData = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
                     print(json)
-                    let result = self.getArticleInformation(fromJSON: json as! [[String : Any]])
+                    guard let jsons = json as? [[String : Any]],
+                        let result = self.getArticleInformation(fromJSON: jsons) else {
+                            return
+                    }
                     OperationQueue.main.addOperation {
-                        completion(result!)
+                        completion(result)
                     }
                 } catch {
                     print("error json")
@@ -59,21 +52,19 @@ struct ConnectAPI {
         for (index, _) in json.enumerated(){
             guard
                 let imageTitle = json[index]["image_title"] as? String,
-                let imageURL = json[index]["image_url"] as? String,
+                let imageURL = json[index]["thumb_image_url"] as? String,
                 let imageDesc = json[index]["image_desc"] as? String,
                 let authorNickName = json[index]["author_nickname"] as? String,
                 let createdDate = json[index]["created_at"] as? Int else {
-                    sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: URL(string: "")!,
-                                                                         title: "",
-                                                                         description: "",
-                                                                         nickName: "",
-                                                                         createdDate: 0))
-                    continue
+                    return nil
             }
             self.fetchImage(url: imageURL, completion: { (UIImage) in
                 sharedImageInfo.imageArray.append(UIImage)
             })
-            sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: URL(string: imageURL)!,
+            guard let url = URL(string: imageURL) else {
+                return nil
+            }
+            sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: url,
                                                                  title: imageTitle,
                                                                  description: imageDesc,
                                                                  nickName: authorNickName,
@@ -83,13 +74,17 @@ struct ConnectAPI {
     }
     
     func fetchImage(url: String, completion: @escaping (UIImage) -> Void) {
-        let photoURL = URL(string: "\(allURL)\(url)")
-        let request = URLRequest(url: photoURL!)
+        
+        guard let photoURL = URL(string: "\(urlList.baseURL)\(url)") else {
+            return
+        }
+        let request = URLRequest(url: photoURL)
         let task = session.dataTask(with: request) { (data, response, error) in
-            
-            let image = UIImage(data: data!)
-            OperationQueue.main.addOperation {
-                completion(image!)
+            if let data = data,
+                let image = UIImage(data: data) {
+                OperationQueue.main.addOperation {
+                    completion(image)
+                }
             }
         }
         task.resume()
@@ -121,17 +116,16 @@ struct ConnectAPI {
                                 return
                             }
                             print("status code should be code : \(httpStatus.statusCode)")
-                            guard let result = self.authUser(fromJSON: json as! [String : Any],
-                                                             statusCode: httpStatus.statusCode)
-                                else {
-                                    completion(self.authUser(fromJSON: json as! [String : Any],
-                                                             statusCode: httpStatus.statusCode)!)
-                                    return
+                            
+                            guard
+                                let jsons = json as? [String : Any],
+                                let result = self.authUser(fromJSON: jsons,
+                                                           statusCode: httpStatus.statusCode) else {
+                                                            return
                             }
                             OperationQueue.main.addOperation {
                                 completion(result)
                             }
-                            
                         } catch {
                             print(error)
                         }
@@ -143,19 +137,33 @@ struct ConnectAPI {
         }
     }
     
+    func authUser(fromJSON json: [String : Any], statusCode: Int) -> SignUpInfo? {
+        guard
+            let id = json["email"] as? String,
+            let password = json["password"] as? String else {
+                return SignUpInfo(id: "", password: "", statusCode: statusCode)
+        }
+        return SignUpInfo(id: id, password: password, statusCode: statusCode)
+    }
+    
     func addArticleRequest(url: URL,
                            body: [String : Any],
                            httpMethod: String) {
         
         var request = URLRequest(url: url)
-
         let boundary = "Boundary-\(UUID().uuidString)"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpMethod = httpMethod
         
-
         do {
-            request.httpBody = createBody(parameters: body, boundary: boundary, data: UIImageJPEGRepresentation(#imageLiteral(resourceName: "chicken.jpg"), 0.7)!, mimeType: "image/jpg", filename: "chicken.jpg")
+            guard let data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "samplePhoto.jpg"), 0.7) else {
+                return
+            }
+            request.httpBody = createBody(parameters: body,
+                                          boundary: boundary,
+                                          data: data,
+                                          mimeType: "image/jpg",
+                                          filename: "chicken.jpg")
             let session = URLSession.shared
             let task = session.dataTask(with: request,
                                         completionHandler:
@@ -165,7 +173,7 @@ struct ConnectAPI {
                         do {
                             let json = try JSONSerialization.jsonObject(with: data, options: [])
                             print(json)
-                            guard let httpStatus = response as? HTTPURLResponse else{
+                            guard let httpStatus = response as? HTTPURLResponse else {
                                 return
                             }
                             print("status code should be code : \(httpStatus.statusCode)")
@@ -202,23 +210,14 @@ struct ConnectAPI {
         body.appendString("--".appending(boundary.appending("--")))
         
         return body as Data
-        
     }
-
-    func authUser(fromJSON json: [String : Any], statusCode: Int) -> SignUpInfo? {
-        guard
-            let id = json["email"] as? String,
-            let password = json["password"] as? String else {
-                return SignUpInfo(id: "", password: "", statusCode: statusCode)
-        }
-        return SignUpInfo(id: id, password: password, statusCode: statusCode)
-    }
-    
 }
 
 extension NSMutableData {
     func appendString(_ string: String) {
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        append(data!)
+        if let data = data {
+            append(data)
+        }
     }
 }

@@ -18,20 +18,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     let connectAPI = ConnectAPI()
     
     @IBAction func signUpAction(_ sender: UIButton) {
-        guard let idText = idTextField.text else {
-            return
+        guard let idText = idTextField.text,
+            let nicknameText = nicknameTextField.text,
+            let passwordText = passwordTextField.text,
+            let passwordChek = passwordCheckTextField.text else {
+                return
         }
-        guard let nicknameText = nicknameTextField.text else {
-            return
-        }
-        guard let passwordText = passwordTextField.text else {
-            return
-        }
-        guard let passwordChek = passwordCheckTextField.text else {
-            return
-        }
-        if idText.isEmpty || nicknameText.isEmpty || passwordText.isEmpty || passwordChek.isEmpty {
+        
+        if idText.isEmpty || nicknameText.isEmpty ||
+            passwordText.isEmpty || passwordChek.isEmpty {
             alertAction(title: "", message: "모든 항목을 입력해 주세요,")
+            return
         }
         
         if idText.contains("@") {
@@ -39,8 +36,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 alertAction(title: "Not same password", message: "please check")
             } else {
                 sharedInfo.info.append(SignUpInfo(id: idText,
-                                                 nickname: nicknameText,
-                                                 password: passwordText))
+                                                  nickname: nicknameText,
+                                                  password: passwordText))
                 alertAction(title: "", message: "가입되었습니다!")
                 self.newUser(email: idText, password: passwordText, nickName: nicknameText)
             }
@@ -63,15 +60,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
     func newUser(email: String, password: String, nickName: String) {
         let body = ["email" : email, "password" : password, "nickname" : nickName]
-        connectAPI.makeNewRequest(url: URL(string:"https://ios-api.boostcamp.connect.or.kr/user")!,
-                       body: body as [String : Any],
-                       httpMethod: "POST",
-                       completion: {
-                        signUpInfo in
-                        return
+        guard let url = URL(string: "\(urlList.signUp)") else {
+            return
+        }
+        connectAPI.makeNewRequest(url: url,
+                                  body: body as [String : Any],
+                                  httpMethod: "POST",
+                                  completion: {
+                                    signUpInfo in
+                                    print(signUpInfo)
+                                    return
         })
     }
 }

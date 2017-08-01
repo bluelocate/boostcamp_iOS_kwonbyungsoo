@@ -14,5 +14,4 @@ class InfoManager {
     static let shared = InfoManager()
     var info: [SignUpInfo] = []
     
-   
 }
