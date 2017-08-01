@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
             return
         }
-//        login(email: idText, password: passwordText)
+        login(email: idText, password: passwordText)
         dismiss(animated: true, completion: nil)
     }
     
@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login(email: String, password: String) {
         let body = ["email" : email, "password" : password]
-        guard let url = URL(string:"\(urlList.login))") else { return }
+        guard let url = URL(string:"https://ios-api.boostcamp.connect.or.kr/login") else { return }
         connectAPI.makeNewRequest(
             url: url,
             body: body as [String : Any],

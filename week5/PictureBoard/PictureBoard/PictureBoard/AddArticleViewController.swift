@@ -40,7 +40,7 @@ class AddArticleViewController: UIViewController {
     func addArticle(title: String, desc: String) {
         
         let body = ["image_title" : title,"image_desc": desc]
-        guard let url = URL(string: "\(urlList.addArticle)") else { return }
+        guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr/image") else { return }
         guard let image = imageView.image else { return }
         imageView.image?.accessibilityIdentifier = "myImage.jpg"
         connectAPI.addArticleRequest(url: url,

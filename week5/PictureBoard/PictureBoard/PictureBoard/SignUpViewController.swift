@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func newUser(email: String, password: String, nickName: String) {
         let body = ["email" : email, "password" : password, "nickname" : nickName]
-        guard let url = URL(string: "\(urlList.signUp)") else { return }
+        guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr/user") else { return }
         connectAPI.makeNewRequest(url: url,
                                   body: body as [String : Any],
                                   httpMethod: "POST",

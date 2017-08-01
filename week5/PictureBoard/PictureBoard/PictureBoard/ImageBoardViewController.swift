@@ -15,7 +15,7 @@ class ImageBoardViewController: UIViewController {
     let connectAPI = ConnectAPI()
     
     override func viewDidLoad() {
-        guard let url = URL(string: "\(urlList.baseURL)") else { return }
+        guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr") else { return }
         connectAPI.getArticle(url: url, completion: {
             (ImageBoardInfo) -> Void in
             print(ImageBoardInfo)
