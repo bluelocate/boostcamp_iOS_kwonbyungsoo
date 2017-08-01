@@ -15,11 +15,6 @@ class ImageBoardViewController: UIViewController {
     let connectAPI = ConnectAPI()
     
     override func viewDidLoad() {
-        guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr") else { return }
-        connectAPI.getArticle(url: url, completion: {
-            (ImageBoardInfo) -> Void in
-            print(ImageBoardInfo)
-        })
         let loginView = storyboard?.instantiateViewController(withIdentifier: "LoginView")
         present(loginView!, animated: false, completion: nil)
         super.viewDidLoad()
@@ -27,7 +22,14 @@ class ImageBoardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
+        guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr") else { return }
+        connectAPI.getArticle(url: url, completion: {
+            (ImageBoardInfo) -> Void in
+            print(ImageBoardInfo)
+        })
         tableView.reloadData()
+        
+
     }
 }
 
@@ -44,7 +46,7 @@ extension ImageBoardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath) as?ImageBoardViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageViewCell", for: indexPath) as? ImageBoardViewCell else {
             return UITableViewCell()
         }
         let info = sharedImageInfo.imageBoardInfo[indexPath.row]

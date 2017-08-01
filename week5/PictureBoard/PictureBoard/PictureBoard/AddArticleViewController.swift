@@ -21,7 +21,6 @@ class AddArticleViewController: UIViewController {
     }
     
     @IBAction func clickAddButton(_ sender: UIBarButtonItem) {
-        
         guard let titleText = titleLabel.text,
             let descText = bodyTextView.text else { return }
         if titleText.isEmpty {
@@ -35,6 +34,7 @@ class AddArticleViewController: UIViewController {
             return
         }
         addArticle(title: titleText, desc: descText)
+        dismiss(animated: true, completion: nil)
     }
     
     func addArticle(title: String, desc: String) {
@@ -66,7 +66,11 @@ extension AddArticleViewController: UINavigationControllerDelegate, UIImagePicke
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
         present(imagePicker, animated: true, completion: nil)
     }
 

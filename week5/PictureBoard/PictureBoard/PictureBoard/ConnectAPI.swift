@@ -8,13 +8,6 @@
 
 import UIKit
 
-
-struct urlList {
-    static let baseURL = "https://ios-api.boostcamp.connect.or.kr"
-    static let login = "https://ios-api.boostcamp.connect.or.kr/login"
-    static let signUp = "https://ios-api.boostcamp.connect.or.kr/user"
-    static let addArticle = "https://ios-api.boostcamp.connect.or.kr/image"
-}
 struct ConnectAPI {
     
     var userID: String?
@@ -52,12 +45,16 @@ struct ConnectAPI {
                 let imageURL = json[index]["thumb_image_url"] as? String,
                 let imageDesc = json[index]["image_desc"] as? String,
                 let authorNickName = json[index]["author_nickname"] as? String,
-                let createdDate = json[index]["created_at"] as? Int else { return nil }
+                let createdDate = json[index]["created_at"] as? Int else { continue }
             self.fetchImage(url: imageURL, completion: {
                 (UIImage) in
                 print("이미지 다 받았니?")
-                sharedImageInfo.imageArray.append(UIImage) })
-            guard let url = URL(string: imageURL) else { return nil }
+                sharedImageInfo.imageArray.append(UIImage)
+            })
+            guard let url = URL(string: imageURL) else {
+                print("이미지 url 이 nil인가..?")
+                return nil }
+            print("파일이 더해지고있어!")
             sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: url,
                                                                  title: imageTitle,
                                                                  description: imageDesc,
@@ -69,7 +66,7 @@ struct ConnectAPI {
     
     func fetchImage(url: String, completion: @escaping (UIImage) -> Void) {
         
-        guard let photoURL = URL(string: "\(urlList.baseURL)\(url)") else { return }
+        guard let photoURL = URL(string: "https://ios-api.boostcamp.connect.or.kr\(url)") else { return }
         let request = URLRequest(url: photoURL)
         let task = session.dataTask(with: request) {
             (data, response, error) in

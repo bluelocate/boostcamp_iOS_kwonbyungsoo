@@ -6,7 +6,7 @@
 //  Copyright © 2017년 5InQueue. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SignUpInfo {
     
