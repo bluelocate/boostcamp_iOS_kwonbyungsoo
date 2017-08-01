@@ -26,7 +26,7 @@ struct ConnectAPI {
                     print(json)
                     guard let jsons = json as? [[String : Any]],
                         let result = self.getArticleInformation(fromJSON: jsons) else { return }
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.sync {
                         completion(result)
                     }
                 } catch {
@@ -72,9 +72,7 @@ struct ConnectAPI {
             (data, response, error) in
             if let data = data,
                 let image = UIImage(data: data) {
-                OperationQueue.main.addOperation {
                     completion(image)
-                }
             }
         }
         task.resume()
