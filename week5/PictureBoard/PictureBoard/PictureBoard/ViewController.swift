@@ -17,11 +17,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = URL(string: "\(urlList.baseURL)") else { return }
-        connectAPI.getArticle(url: url, completion: {
-            (ImageBoardInfo) -> Void in
-            print(ImageBoardInfo)
-        })
+       
+      
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +34,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alertAction(title: "", message: "모든 항목을 입력하세요.")
             return
         }
-        login(email: idText, password: passwordText)
+//        login(email: idText, password: passwordText)
+        dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

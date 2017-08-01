@@ -15,13 +15,23 @@ class ImageBoardViewController: UIViewController {
     let connectAPI = ConnectAPI()
     
     override func viewDidLoad() {
+//        guard let url = URL(string: "\(urlList.baseURL)") else { return }
+//        connectAPI.getArticle(url: url, completion: {
+//            (ImageBoardInfo) -> Void in
+//            print(ImageBoardInfo)
+//        })
+        let loginView = storyboard?.instantiateViewController(withIdentifier: "LoginView")
+        present(loginView!, animated: false, completion: nil)
         super.viewDidLoad()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
-        tableView.reloadData()
+        guard let url = URL(string: "\(urlList.baseURL)") else { return }
+        connectAPI.getArticle(url: url, completion: {
+            (ImageBoardInfo) -> Void in
+            print(ImageBoardInfo)
+        })
+    tableView.reloadData()
     }
 }
 

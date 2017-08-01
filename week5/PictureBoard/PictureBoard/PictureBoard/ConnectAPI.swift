@@ -9,11 +9,11 @@
 import UIKit
 
 
-enum urlList: String {
-    case baseURL = "https://ios-api.boostcamp.connect.or.kr"
-    case login = "https://ios-api.boostcamp.connect.or.kr/login"
-    case signUp = "https://ios-api.boostcamp.connect.or.kr/user"
-    case addArticle = "https://ios-api.boostcamp.connect.or.kr/image"
+struct urlList {
+    static let baseURL = "https://ios-api.boostcamp.connect.or.kr"
+    static let login = "https://ios-api.boostcamp.connect.or.kr/login"
+    static let signUp = "https://ios-api.boostcamp.connect.or.kr/user"
+    static let addArticle = "https://ios-api.boostcamp.connect.or.kr/image"
 }
 struct ConnectAPI {
     
@@ -55,6 +55,7 @@ struct ConnectAPI {
                 let createdDate = json[index]["created_at"] as? Int else { return nil }
             self.fetchImage(url: imageURL, completion: {
                 (UIImage) in
+                print("이미지 다 받았니?")
                 sharedImageInfo.imageArray.append(UIImage) })
             guard let url = URL(string: imageURL) else { return nil }
             sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: url,
