@@ -31,6 +31,9 @@ class PhotoStore {
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             print(response.debugDescription)
+            guard let error = error else {
+                return
+            }
             let result = self.processPhotosRequest(data: data, error: error)
             OperationQueue.main.addOperation {
                 completion(result)
@@ -46,6 +49,9 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             (data, response, error) -> Void in
             print(response.debugDescription)
+            guard let error = error else {
+                return
+            }
             let result = self.processPhotosRequest(data: data, error: error)
             OperationQueue.main.addOperation {
                 completion(result)
@@ -54,9 +60,9 @@ class PhotoStore {
         task.resume()
     }
     
-    private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult {
+    private func processPhotosRequest(data: Data?, error: Error) -> PhotosResult {
         guard let jsonData = data else {
-            return .failure(error!)
+            return .failure(error)
         }
         return FlickrAPI.photos(fromJson: jsonData)
     }
