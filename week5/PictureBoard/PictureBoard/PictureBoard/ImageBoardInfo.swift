@@ -9,13 +9,13 @@
 import UIKit
 
 class ImageBoardInfo {
-    var imageURL: URL?
+    var imageURL: String?
     var title: String?
     var description: String?
     var nickName: String?
     var createdDate: Int?
     var image: String?
-    init(imageURL: URL, title: String, description: String, nickName: String, createdDate: Int) {
+    init(imageURL: String, title: String, description: String, nickName: String, createdDate: Int) {
         self.imageURL = imageURL
         self.title = title
         self.description = description

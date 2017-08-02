@@ -26,7 +26,7 @@ struct ConnectAPI {
                     print(json)
                     guard let jsons = json as? [[String : Any]],
                         let result = self.getArticleInformation(fromJSON: jsons) else { return }
-                    DispatchQueue.main.sync {
+                    OperationQueue.main.addOperation {
                         completion(result)
                     }
                 } catch {
@@ -46,16 +46,12 @@ struct ConnectAPI {
                 let imageDesc = json[index]["image_desc"] as? String,
                 let authorNickName = json[index]["author_nickname"] as? String,
                 let createdDate = json[index]["created_at"] as? Int else { continue }
-            self.fetchImage(url: imageURL, completion: {
-                (UIImage) in
-                print("이미지 다 받았니?")
-                sharedImageInfo.imageArray.append(UIImage)
-            })
+            
             guard let url = URL(string: imageURL) else {
                 print("이미지 url 이 nil인가..?")
                 return nil }
             print("파일이 더해지고있어!")
-            sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: url,
+            sharedImageInfo.imageBoardInfo.append(ImageBoardInfo(imageURL: imageURL,
                                                                  title: imageTitle,
                                                                  description: imageDesc,
                                                                  nickName: authorNickName,
@@ -72,7 +68,10 @@ struct ConnectAPI {
             (data, response, error) in
             if let data = data,
                 let image = UIImage(data: data) {
+                OperationQueue.main.addOperation {
                     completion(image)
+                    
+                }
             }
         }
         task.resume()
@@ -148,6 +147,7 @@ struct ConnectAPI {
                                       mimeType: "image/jpg",
                                       filename: "\(imageTitle)")
         let session = URLSession.shared
+        let sessions = URLSession(configuration: .default)
         let task = session.dataTask(with: request,
                                     completionHandler:
             {

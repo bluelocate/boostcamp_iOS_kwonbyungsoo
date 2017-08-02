@@ -21,7 +21,7 @@ class ImageBoardViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
+        
         guard let url = URL(string: "https://ios-api.boostcamp.connect.or.kr") else { return }
         connectAPI.getArticle(url: url, completion: {
             (ImageBoardInfo) -> Void in
@@ -29,7 +29,7 @@ class ImageBoardViewController: UIViewController {
         })
         tableView.reloadData()
         
-
+        
     }
 }
 
@@ -50,10 +50,15 @@ extension ImageBoardViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let info = sharedImageInfo.imageBoardInfo[indexPath.row]
+        connectAPI.fetchImage(url: info.imageURL!) { (UIImage) in
+            let imageCell = tableView.cellForRow(at: indexPath)
+            imageCell?.imageView?.image = UIImage
+            
+        }
         cell.titleLabel.text = info.title
         cell.descLabel.text = info.description
         cell.createdDate.text = String(describing: info.createdDate)
-        cell.imageView?.image = sharedImageInfo.imageArray[indexPath.row]
+        //        cell.imageView?.image = sharedImageInfo.imageArray[indexPath.row]
         cell.imageView?.sizeThatFits(CGSize(width: 60, height: 60))
         return cell
     }
