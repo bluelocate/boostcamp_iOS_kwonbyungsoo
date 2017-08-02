@@ -98,9 +98,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         } else {
             imagePicker.sourceType = .photoLibrary
         }
+//        imageView.image = UIImage(conten)
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        imagePicker.cameraOverlayView? = (UIImageView.init(image: (#imageLiteral(resourceName: "로도"))))
+        imagePicker.cameraOverlayView? = imageView
         imagePicker.cameraOverlayView?.center = view.center.applying(CGAffineTransform(translationX: 0.0, y: -50.0))
         
         present(imagePicker, animated: true, completion: nil)
@@ -113,9 +114,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         let alertController = UIAlertController(title: "Really?",
                                                 message: "delete??",
                                                 preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.imageStore?.deleteImage(forKey: item.itemKey)
-            self.imageView.image = nil
+        let okAction = UIAlertAction(title: "OK", style: .default) {
+            [weak self] (action) in
+            self?.imageStore?.deleteImage(forKey: item.itemKey)
+            self?.imageView.image = nil
         }
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         alertController.addAction(okAction)
